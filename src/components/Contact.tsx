@@ -3,7 +3,7 @@ import { Instagram, MessageCircle, Mail, MapPin } from "lucide-react";
 
 export const Contact = () => {
   const handleInstagramClick = () => {
-    window.open('https://www.instagram.com/ironbeastsgym', '_blank');
+    window.open('https://www.instagram.com/ironstudio_bbclub', '_blank');
   };
 
   const handleWhatsAppClick = () => {
@@ -19,7 +19,7 @@ export const Contact = () => {
               Junta-te a <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nós</span>
             </h2>
             <p className="text-xl text-muted-foreground">
-              Pronto para fazer parte da comunidade Iron Beasts?
+              Pronto para fazer parte da comunidade Iron Studio?
             </p>
           </div>
 
@@ -31,7 +31,7 @@ export const Contact = () => {
               </div>
               <h3 className="text-2xl font-bold mb-3">Segue-nos no Instagram</h3>
               <p className="text-muted-foreground mb-6">
-                Vê as nossas instalações, conhece a comunidade e fica a par das novidades do Iron Beasts.
+                Vê as nossas instalações, conhece a comunidade e fica a par das novidades do Iron Studio.
               </p>
               <Button 
                 variant="hero" 
@@ -70,14 +70,14 @@ export const Contact = () => {
                 <Mail className="w-6 h-6 text-primary mt-1" />
                 <div>
                   <h4 className="font-bold mb-1">Email</h4>
-                  <p className="text-muted-foreground">contato@ironbeastsgym.com</p>
+                  <p className="text-muted-foreground">geral@ironstudio.pt</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
                 <MapPin className="w-6 h-6 text-primary mt-1" />
                 <div>
                   <h4 className="font-bold mb-1">Localização</h4>
-                  <p className="text-muted-foreground">Portugal</p>
+                  <p className="text-muted-foreground">Leiria, Portugal</p>
                 </div>
               </div>
             </div>

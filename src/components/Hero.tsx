@@ -17,16 +17,16 @@ export const Hero = () => {
       <div className="relative z-10 container mx-auto px-4 text-center">
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 uppercase tracking-tight">
           <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-            Iron Beasts
+            Iron Studio
           </span>
           <br />
-          <span className="text-foreground">Gym</span>
+          <span className="text-foreground">BB Club</span>
         </h1>
         
         <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Um ginásio privado para quem leva a musculação a sério. 
+          Treina à tua maneira. Evolui ao teu ritmo.
           <br />
-          Comunidade dedicada, equipamento de elite.
+          Aberto com horário alargado.
         </p>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">

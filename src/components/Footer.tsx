@@ -10,7 +10,7 @@ export const Footer = () => {
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-black uppercase mb-1">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Iron Beasts
+                Iron Studio
               </span>
             </h3>
             <p className="text-sm text-muted-foreground">
@@ -20,11 +20,11 @@ export const Footer = () => {
 
           <div className="flex items-center gap-6">
             <a 
-              href="https://www.instagram.com/ironbeastsgym" 
+              href="https://www.instagram.com/ironstudio_bbclub" 
               target="_blank" 
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-primary transition-[var(--transition-smooth)]"
-              aria-label="Instagram do Iron Beasts Gym"
+              aria-label="Instagram do Iron Studio"
             >
               <Instagram className="w-6 h-6" />
             </a>
@@ -32,7 +32,7 @@ export const Footer = () => {
         </div>
 
         <div className="mt-6 pt-6 border-t border-border text-center text-sm text-muted-foreground">
-          <p>&copy; {currentYear} Iron Beasts Gym. Todos os direitos reservados.</p>
+          <p>&copy; {currentYear} Iron Studio | BB Club. Todos os direitos reservados.</p>
         </div>
       </div>
     </footer>

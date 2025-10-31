@@ -46,9 +46,9 @@ export const About = () => {
 
           {/* Content */}
           <div>
-            <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase">
-              Sobre o <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Iron Beasts</span>
-            </h2>
+          <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase">
+            Sobre o <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Iron Studio</span>
+          </h2>
             
             <p className="text-lg text-muted-foreground mb-8">
               O Iron Beasts não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
