@@ -1,4 +1,4 @@
-import { Instagram } from "lucide-react";
+import { InstagramIcon } from "./SocialIcons";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -23,10 +23,10 @@ export const Footer = () => {
               href="https://www.instagram.com/ironstudio_bbclub" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-primary transition-[var(--transition-smooth)]"
+              className="hover:opacity-80 transition-[var(--transition-smooth)]"
               aria-label="Instagram do Iron Studio"
             >
-              <Instagram className="w-6 h-6" />
+              <InstagramIcon className="w-6 h-6" />
             </a>
           </div>
         </div>

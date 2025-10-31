@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Instagram, MessageCircle, Mail, MapPin } from "lucide-react";
+import { Mail, MapPin } from "lucide-react";
+import { InstagramIcon, WhatsAppIcon } from "./SocialIcons";
 
 export const Contact = () => {
   const handleInstagramClick = () => {
@@ -26,8 +27,8 @@ export const Contact = () => {
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Instagram Card */}
             <div className="bg-background border border-border rounded-lg p-8 hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mb-6 shadow-[var(--shadow-glow)]">
-                <Instagram className="w-8 h-8 text-primary-foreground" />
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <InstagramIcon className="w-10 h-10" />
               </div>
               <h3 className="text-2xl font-bold mb-3">Segue-nos no Instagram</h3>
               <p className="text-muted-foreground mb-6">
@@ -38,15 +39,15 @@ export const Contact = () => {
                 className="w-full" 
                 onClick={handleInstagramClick}
               >
-                <Instagram className="mr-2 h-5 w-5" />
+                <InstagramIcon className="mr-2 h-5 w-5" />
                 Ver Instagram
               </Button>
             </div>
 
             {/* WhatsApp Card */}
             <div className="bg-background border border-border rounded-lg p-8 hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-              <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mb-6 shadow-[var(--shadow-glow)]">
-                <MessageCircle className="w-8 h-8 text-primary-foreground" />
+              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
+                <WhatsAppIcon className="w-10 h-10" />
               </div>
               <h3 className="text-2xl font-bold mb-3">Fala Connosco</h3>
               <p className="text-muted-foreground mb-6">
@@ -57,7 +58,7 @@ export const Contact = () => {
                 className="w-full" 
                 onClick={handleWhatsAppClick}
               >
-                <MessageCircle className="mr-2 h-5 w-5" />
+                <WhatsAppIcon className="mr-2 h-5 w-5" />
                 WhatsApp
               </Button>
             </div>
