@@ -1,5 +1,5 @@
 import { Dumbbell, Users, Clock, Trophy } from "lucide-react";
-import equipmentImage from "@/assets/equipment.jpg";
+import equipmentImage from "@/assets/gym-equipment.jpg";
 
 export const About = () => {
   const features = [
@@ -34,13 +34,13 @@ export const About = () => {
             <div className="aspect-square rounded-lg overflow-hidden shadow-[var(--shadow-elevated)]">
               <img 
                 src={equipmentImage} 
-                alt="Iron Beasts Gym Equipment" 
+                alt="Iron Studio BB Club - Equipamento de Musculação" 
                 className="w-full h-full object-cover"
               />
             </div>
             <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-lg p-6 shadow-[var(--shadow-elevated)]">
               <p className="text-sm text-muted-foreground">Fundado em</p>
-              <p className="text-3xl font-black text-primary">2024</p>
+              <p className="text-3xl font-black text-primary">2023</p>
             </div>
           </div>
 
@@ -51,7 +51,7 @@ export const About = () => {
           </h2>
             
             <p className="text-lg text-muted-foreground mb-8">
-              O Iron Beasts não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
+              O Iron Studio não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
               com a musculação encontram o ambiente perfeito para evoluir. Sem multidões, sem distrações, 
               apenas ferro pesado e uma comunidade que partilha os mesmos objetivos.
             </p>

@@ -1,5 +1,5 @@
 import { Shield, Zap, Target } from "lucide-react";
-import image247 from "@/assets/24-7.jpg";
+import image247 from "@/assets/gym-wall.jpg";
 
 export const Features = () => {
   return (

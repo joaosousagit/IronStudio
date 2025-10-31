@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
-import heroImage from "@/assets/hero-gym.jpg";
+import heroImage from "@/assets/gym-interior.jpg";
+import logo from "@/assets/logo.jpg";
 import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
@@ -15,6 +16,15 @@ export const Hero = () => {
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
+        {/* Logo */}
+        <div className="mb-8 inline-block">
+          <img 
+            src={logo} 
+            alt="Iron Studio Logo" 
+            className="w-48 md:w-64 h-auto mx-auto drop-shadow-2xl"
+          />
+        </div>
+
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 uppercase tracking-tight">
           <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
             Iron Studio
