@@ -27,11 +27,11 @@ export const Pricing = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Plano Mensal */}
-          <div className="bg-background border-2 border-primary rounded-lg p-8 shadow-[var(--shadow-elevated)] hover:shadow-[var(--shadow-glow)] transition-[var(--transition-smooth)]">
+          <div className="glass-strong rounded-lg p-8 hover-3d glow-strong">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold mb-2">Plano Mensal</h3>
               <div className="mb-4">
-                <span className="text-5xl font-black bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                <span className="text-5xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient neon-text">
                   50€
                 </span>
                 <span className="text-muted-foreground">/mês</span>
@@ -64,7 +64,7 @@ export const Pricing = () => {
           </div>
 
           {/* Plano Experimental */}
-          <div className="bg-background border border-border rounded-lg p-8 shadow-[var(--shadow-elevated)] hover:border-primary transition-[var(--transition-smooth)]">
+          <div className="glass rounded-lg p-8 hover-3d glow">
             <div className="text-center mb-6">
               <h3 className="text-2xl font-bold mb-2">Experimenta</h3>
               <div className="mb-4">

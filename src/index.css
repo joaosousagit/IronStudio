@@ -49,6 +49,14 @@ All colors MUST be HSL.
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    /* Glass effects */
+    --glass-bg: hsl(0 0% 12% / 0.4);
+    --glass-border: hsl(0 0% 100% / 0.1);
+    
+    /* Glow colors */
+    --glow-primary: hsl(0 0% 65% / 0.5);
+    --glow-accent: hsl(0 0% 75% / 0.4);
   }
 
   .dark {
@@ -89,5 +97,96 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  /* Glassmorphism */
+  .glass {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .glass-strong {
+    background: hsl(0 0% 12% / 0.6);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.15);
+  }
+
+  /* Animated gradients */
+  .animate-gradient {
+    background-size: 200% 200%;
+    animation: gradient-shift 6s ease infinite;
+  }
+  
+  @keyframes gradient-shift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+
+  /* 3D Hover Effects */
+  .hover-3d {
+    transform-style: preserve-3d;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .hover-3d:hover {
+    transform: translateY(-8px) rotateX(5deg);
+    box-shadow: 0 20px 40px -10px var(--glow-primary);
+  }
+
+  /* Glow effects */
+  .glow {
+    box-shadow: 0 0 20px var(--glow-primary);
+  }
+  
+  .glow-strong {
+    box-shadow: 0 0 30px var(--glow-primary), 0 0 60px var(--glow-accent);
+  }
+  
+  .glow-pulse {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% { 
+      box-shadow: 0 0 20px var(--glow-primary);
+    }
+    50% { 
+      box-shadow: 0 0 40px var(--glow-primary), 0 0 80px var(--glow-accent);
+    }
+  }
+
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .scroll-reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Neon text */
+  .neon-text {
+    text-shadow: 
+      0 0 10px var(--glow-primary),
+      0 0 20px var(--glow-primary),
+      0 0 30px var(--glow-accent);
+  }
+
+  /* Floating animation */
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
   }
 }

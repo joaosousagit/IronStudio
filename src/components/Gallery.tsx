@@ -33,7 +33,7 @@ export const Gallery = () => {
           {images.map((image, index) => (
             <div
               key={index}
-              className="group relative aspect-square overflow-hidden rounded-lg border border-border shadow-[var(--shadow-elevated)] hover:shadow-[var(--shadow-glow)] transition-[var(--transition-smooth)]"
+              className="group relative aspect-square overflow-hidden rounded-lg glass hover-3d glow"
             >
               <img
                 src={image.src}

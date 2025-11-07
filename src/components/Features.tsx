@@ -15,8 +15,8 @@ export const Features = () => {
         </div>
 
         <div className="grid lg:grid-cols-3 gap-8 mb-12">
-          <div className="bg-card border border-border rounded-lg p-8 text-center hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-[var(--shadow-glow)]">
+          <div className="glass rounded-lg p-8 text-center hover-3d glow">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary via-accent to-primary rounded-full flex items-center justify-center mx-auto mb-6 glow-pulse animate-gradient">
               <Shield className="w-8 h-8 text-primary-foreground" />
             </div>
             <h3 className="text-2xl font-bold mb-3">Ambiente Privado</h3>
@@ -25,8 +25,8 @@ export const Features = () => {
             </p>
           </div>
 
-          <div className="bg-card border border-border rounded-lg p-8 text-center hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-[var(--shadow-glow)]">
+          <div className="glass rounded-lg p-8 text-center hover-3d glow">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary via-accent to-primary rounded-full flex items-center justify-center mx-auto mb-6 glow-pulse animate-gradient">
               <Zap className="w-8 h-8 text-primary-foreground" />
             </div>
             <h3 className="text-2xl font-bold mb-3">Zero Distrações</h3>
@@ -35,8 +35,8 @@ export const Features = () => {
             </p>
           </div>
 
-          <div className="bg-card border border-border rounded-lg p-8 text-center hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-            <div className="w-16 h-16 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center mx-auto mb-6 shadow-[var(--shadow-glow)]">
+          <div className="glass rounded-lg p-8 text-center hover-3d glow">
+            <div className="w-16 h-16 bg-gradient-to-br from-primary via-accent to-primary rounded-full flex items-center justify-center mx-auto mb-6 glow-pulse animate-gradient">
               <Target className="w-8 h-8 text-primary-foreground" />
             </div>
             <h3 className="text-2xl font-bold mb-3">Só Resultados</h3>
