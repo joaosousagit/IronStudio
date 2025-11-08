@@ -69,8 +69,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'rajdhani': ['Rajdhani', 'sans-serif'],
-        'inter': ['Inter', 'sans-serif'],
+        'anton': ['Anton', 'sans-serif'],
+        'roboto-condensed': ['Roboto Condensed', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
