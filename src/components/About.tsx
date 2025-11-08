@@ -30,24 +30,24 @@ export const About = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative">
-            <div className="aspect-square rounded-lg overflow-hidden shadow-[var(--shadow-elevated)]">
+          <div className="relative grayscale-red">
+            <div className="aspect-square overflow-hidden">
               <img 
                 src={equipmentImage} 
                 alt="Iron Studio BB Club - Equipamento de Musculação" 
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-white border border-[hsl(var(--border-light))] rounded-lg p-6 shadow-[var(--shadow-elevated)]">
-              <p className="text-sm text-[hsl(var(--muted-foreground-light))]">Fundado em</p>
-              <p className="text-3xl font-black text-primary">2023</p>
+            <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-8">
+              <p className="text-sm mb-2 uppercase">Fundado em</p>
+              <p className="text-5xl font-black">2023</p>
             </div>
           </div>
 
           {/* Content */}
           <div>
-          <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase">
-            Sobre o <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Iron Studio</span>
+          <h2 className="text-5xl md:text-6xl font-black mb-8 uppercase italic">
+            Sobre o <span className="text-primary">Iron Studio</span>
           </h2>
             
             <p className="text-lg text-[hsl(var(--muted-foreground-light))] mb-6 leading-relaxed">
@@ -56,9 +56,9 @@ export const About = () => {
               apenas ferro pesado e uma comunidade que partilha os mesmos objetivos.
             </p>
 
-            <div className="glass px-6 py-4 rounded-lg mb-8 border-l-4 border-primary">
-              <p className="text-[hsl(var(--foreground-light))] font-semibold mb-2">📍 Instalações Completas:</p>
-              <p className="text-[hsl(var(--muted-foreground-light))] text-sm leading-relaxed">
+            <div className="bg-white border-l-4 border-primary px-6 py-4 mb-10">
+              <p className="text-[hsl(var(--foreground-light))] font-bold mb-2 uppercase">📍 Instalações Completas</p>
+              <p className="text-[hsl(var(--muted-foreground-light))] leading-relaxed">
                 Zona de pesos livres • Máquinas profissionais • Área de cardio • Balneários com chuveiros • Estacionamento gratuito
               </p>
             </div>
@@ -67,10 +67,10 @@ export const About = () => {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={index} className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-6 hover:border-primary transition-[var(--transition-smooth)]">
-                    <Icon className="w-10 h-10 text-primary mb-4" />
-                    <h3 className="text-xl font-bold mb-2 text-[hsl(var(--foreground-light))]">{feature.title}</h3>
-                    <p className="text-[hsl(var(--muted-foreground-light))] text-sm">{feature.description}</p>
+                  <div key={index} className="bg-white border-2 border-[hsl(var(--border-light))] p-6 hover:border-primary transition-all duration-300">
+                    <Icon className="w-12 h-12 text-primary mb-4" />
+                    <h3 className="text-xl font-bold mb-3 text-[hsl(var(--foreground-light))] uppercase">{feature.title}</h3>
+                    <p className="text-[hsl(var(--muted-foreground-light))]">{feature.description}</p>
                   </div>
                 );
               })}

@@ -14,11 +14,9 @@ export const Pricing = () => {
   return (
     <section id="pricing" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Preços
-            </span>
+        <div className="text-center mb-16">
+          <h2 className="text-5xl md:text-6xl font-black mb-6 uppercase italic">
+            <span className="text-primary">Preços</span>
           </h2>
           <p className="text-xl text-[hsl(var(--muted-foreground-light))]">
             Planos simples e transparentes
@@ -27,16 +25,16 @@ export const Pricing = () => {
 
         <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
           {/* Plano Mensal */}
-          <div className="bg-white border-2 border-primary rounded-lg p-8 hover-3d shadow-xl">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-2 text-[hsl(var(--foreground-light))]">Plano Mensal</h3>
+          <div className="bg-white border-4 border-primary p-10 hover:shadow-2xl transition-all duration-300">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Mensal</h3>
               <div className="mb-4">
-                <span className="text-5xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient neon-text">
+                <span className="text-6xl font-black text-primary">
                   50€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
               </div>
-              <p className="text-sm text-[hsl(var(--muted-foreground-light))]">
+              <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
                 Pagamento por MBWay
               </p>
             </div>
@@ -51,8 +49,9 @@ export const Pricing = () => {
             </ul>
 
             <Button
-              variant="hero"
-              className="w-full"
+              variant="default"
+              size="lg"
+              className="w-full uppercase font-bold tracking-wide"
               onClick={() =>
                 document
                   .getElementById("contact")
@@ -64,14 +63,14 @@ export const Pricing = () => {
           </div>
 
           {/* Plano Experimental */}
-          <div className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-8 hover-3d shadow-lg">
-            <div className="text-center mb-6">
-              <h3 className="text-2xl font-bold mb-2 text-[hsl(var(--foreground-light))]">Experimenta</h3>
+          <div className="bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:shadow-2xl transition-all duration-300">
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Experimenta</h3>
               <div className="mb-4">
-                <span className="text-5xl font-black text-[hsl(var(--foreground-light))]">15€</span>
+                <span className="text-6xl font-black text-[hsl(var(--foreground-light))]">15€</span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/dia</span>
               </div>
-              <p className="text-sm text-[hsl(var(--muted-foreground-light))]">
+              <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
                 Testa antes de decidir
               </p>
             </div>
@@ -97,7 +96,8 @@ export const Pricing = () => {
 
             <Button
               variant="outline"
-              className="w-full"
+              size="lg"
+              className="w-full uppercase font-bold tracking-wide"
               onClick={() =>
                 document
                   .getElementById("contact")

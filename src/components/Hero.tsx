@@ -5,87 +5,57 @@ import { ArrowRight } from "lucide-react";
 
 export const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center"
-        style={{ backgroundImage: `url(${heroImage})` }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-background/70 via-background/50 to-background animate-gradient"></div>
+    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Image with Grayscale Effect */}
+      <div className="absolute inset-0 grayscale-red">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroImage})` }}
+        />
+        <div className="absolute inset-0 bg-background/60"></div>
       </div>
-      
-      {/* Animated gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-transparent to-accent/10 animate-gradient"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         {/* Logo */}
-        <div className="mb-12 inline-block">
+        <div className="mb-8 inline-block scroll-reveal revealed">
           <img 
             src={logo} 
             alt="Iron Studio Logo" 
-            className="w-48 md:w-64 h-auto mx-auto drop-shadow-2xl"
+            className="w-64 md:w-80 lg:w-96 h-auto mx-auto"
           />
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 uppercase tracking-tight animate-slide-up">
-          <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent neon-text animate-gradient">
-            Iron Studio
+        <h1 className="text-6xl md:text-8xl lg:text-9xl font-black mb-6 uppercase tracking-tighter scroll-reveal revealed italic" style={{ animationDelay: '0.2s' }}>
+          <span className="text-foreground drop-shadow-[0_0_30px_rgba(220,38,38,0.8)]">
+            IRON STUDIO
           </span>
-          <br />
-          <span className="text-foreground drop-shadow-2xl">BB Club</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
-          Treina à tua maneira. Evolui ao teu ritmo.
-          <br />
-          Aberto com horário alargado.
+        <p className="text-2xl md:text-3xl font-bold uppercase tracking-wide mb-4 scroll-reveal revealed" style={{ animationDelay: '0.3s' }}>
+          BB Club
+        </p>
+        
+        <p className="text-lg md:text-xl text-muted-foreground mb-12 max-w-xl mx-auto scroll-reveal revealed" style={{ animationDelay: '0.4s' }}>
+          Ginásio Privado em Leiria
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center scroll-reveal revealed" style={{ animationDelay: '0.5s' }}>
           <Button 
-            variant="hero" 
+            variant="default" 
             size="lg"
+            className="uppercase font-bold tracking-wide px-8"
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
           >
             Juntar à Comunidade
-            <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
-          <Button 
-            variant="outline" 
-            size="lg"
-            onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
-          >
-            Saber Mais
-          </Button>
-        </div>
-
-        {/* Info Badges */}
-        <div className="mt-20 flex flex-col sm:flex-row gap-6 justify-center items-center">
-          <div className="inline-block animate-scale-in float">
-            <div className="glass-strong rounded-lg px-8 py-4 glow-pulse">
-              <p className="text-sm text-muted-foreground mb-2">Em Leiria</p>
-              <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
-                Horário Mais Alargado
-              </p>
-            </div>
-          </div>
-
-          <div className="inline-block animate-scale-in float" style={{ animationDelay: '0.2s' }}>
-            <div className="glass-strong rounded-lg px-8 py-4 glow">
-              <p className="text-sm text-muted-foreground mb-2">Comunidade Exclusiva</p>
-              <p className="text-2xl md:text-3xl font-black text-primary">
-                50+ Atletas
-              </p>
-            </div>
-          </div>
         </div>
       </div>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-muted-foreground rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-3 bg-primary rounded-full"></div>
+        <div className="w-6 h-10 border-2 border-foreground/30 flex items-start justify-center p-2">
+          <div className="w-1 h-3 bg-primary"></div>
         </div>
       </div>
     </section>
