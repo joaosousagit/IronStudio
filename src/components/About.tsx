@@ -26,7 +26,7 @@ export const About = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-background">
+    <section id="about" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
@@ -38,8 +38,8 @@ export const About = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-6 -right-6 bg-card border border-border rounded-lg p-6 shadow-[var(--shadow-elevated)]">
-              <p className="text-sm text-muted-foreground">Fundado em</p>
+            <div className="absolute -bottom-6 -right-6 bg-white border border-[hsl(var(--border-light))] rounded-lg p-6 shadow-[var(--shadow-elevated)]">
+              <p className="text-sm text-[hsl(var(--muted-foreground-light))]">Fundado em</p>
               <p className="text-3xl font-black text-primary">2023</p>
             </div>
           </div>
@@ -50,7 +50,7 @@ export const About = () => {
             Sobre o <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Iron Studio</span>
           </h2>
             
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-lg text-[hsl(var(--muted-foreground-light))] mb-8">
               O Iron Studio não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
               com a musculação encontram o ambiente perfeito para evoluir. Sem multidões, sem distrações, 
               apenas ferro pesado e uma comunidade que partilha os mesmos objetivos.
@@ -60,10 +60,10 @@ export const About = () => {
               {features.map((feature, index) => {
                 const Icon = feature.icon;
                 return (
-                  <div key={index} className="bg-card border border-border rounded-lg p-6 hover:border-primary transition-[var(--transition-smooth)]">
+                  <div key={index} className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-6 hover:border-primary transition-[var(--transition-smooth)]">
                     <Icon className="w-10 h-10 text-primary mb-4" />
-                    <h3 className="text-xl font-bold mb-2">{feature.title}</h3>
-                    <p className="text-muted-foreground text-sm">{feature.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-[hsl(var(--foreground-light))]">{feature.title}</h3>
+                    <p className="text-[hsl(var(--muted-foreground-light))] text-sm">{feature.description}</p>
                   </div>
                 );
               })}

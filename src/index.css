@@ -35,6 +35,13 @@ All colors MUST be HSL.
     --border: 0 0% 25%;
     --input: 0 0% 22%;
     --ring: 0 0% 60%;
+    
+    /* Light section colors for contrast */
+    --background-light: 0 0% 96%;
+    --foreground-light: 0 0% 15%;
+    --border-light: 0 0% 88%;
+    --muted-light: 0 0% 92%;
+    --muted-foreground-light: 0 0% 40%;
 
     --radius: 0.5rem;
 

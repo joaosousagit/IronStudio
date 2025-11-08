@@ -69,7 +69,7 @@ export const Machines = () => {
   ];
 
   return (
-    <section id="machines" className="py-20 bg-gradient-to-b from-background to-secondary/20">
+    <section id="machines" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 mb-4 glass px-6 py-3 rounded-full">
@@ -83,7 +83,7 @@ export const Machines = () => {
               As Melhores Máquinas do Mercado
             </span>
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="text-xl text-[hsl(var(--muted-foreground-light))] max-w-2xl mx-auto">
             Marcas líderes mundiais em equipamento de fitness profissional
           </p>
         </div>
@@ -94,7 +94,7 @@ export const Machines = () => {
             return (
               <div
                 key={index}
-                className="glass-strong hover-3d glow group overflow-hidden rounded-2xl"
+                className="bg-white border border-[hsl(var(--border-light))] hover-3d group overflow-hidden rounded-2xl shadow-lg"
               >
                 <div className="relative h-64 overflow-hidden">
                   <img
@@ -117,18 +117,18 @@ export const Machines = () => {
                   <h3 className="text-2xl font-black mb-3 uppercase">
                     {item.name}
                   </h3>
-                  <p className="text-muted-foreground mb-4 text-sm">
+                  <p className="text-[hsl(var(--muted-foreground-light))] mb-4 text-sm">
                     {item.description}
                   </p>
                   <div className="space-y-2">
-                    <p className="text-xs text-muted-foreground uppercase tracking-wider font-semibold">
+                    <p className="text-xs text-[hsl(var(--muted-foreground-light))] uppercase tracking-wider font-semibold">
                       Músculos trabalhados:
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {item.muscleGroups.map((muscle, idx) => (
                         <span 
                           key={idx} 
-                          className="text-xs px-3 py-1 glass rounded-full text-foreground/80"
+                          className="text-xs px-3 py-1 bg-[hsl(var(--muted-light))] rounded-full text-[hsl(var(--foreground-light))]"
                         >
                           {muscle}
                         </span>
