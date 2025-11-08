@@ -60,12 +60,12 @@ export const Hero = () => {
           </Button>
         </div>
 
-        {/* 24/7 Badge */}
+        {/* Horário Badge */}
         <div className="mt-12 inline-block animate-scale-in float">
           <div className="glass-strong rounded-lg px-8 py-4 glow-pulse">
-            <p className="text-sm text-muted-foreground mb-1">Sempre Aberto</p>
-            <p className="text-4xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
-              24/7
+            <p className="text-sm text-muted-foreground mb-1">Em Leiria</p>
+            <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+              Horário Mais Alargado
             </p>
           </div>
         </div>
