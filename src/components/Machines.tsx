@@ -1,4 +1,6 @@
-import { Dumbbell, Zap, Award, Activity, Bike, TrendingUp } from "lucide-react";
+import { Dumbbell, Award, Activity, Bike, TrendingUp, ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 import equipmentImg from "@/assets/gym-equipment.jpg";
 import hardcoreImg from "@/assets/hardcore-bodybuilding.jpg";
 import athleteFocusImg from "@/assets/athlete-focus.jpg";
@@ -13,6 +15,8 @@ interface MachineItem {
 }
 
 export const Machines = () => {
+  const navigate = useNavigate();
+  
   const machines: MachineItem[] = [
     {
       name: "Leg Press 45°",
@@ -85,7 +89,7 @@ export const Machines = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {machines.map((item, index) => {
+          {machines.slice(0, 3).map((item, index) => {
             const IconComponent = item.icon;
             return (
               <div
@@ -138,9 +142,14 @@ export const Machines = () => {
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-muted-foreground italic">
-            * Brevemente com fotos atualizadas de todo o nosso equipamento premium
-          </p>
+          <Button
+            size="lg"
+            onClick={() => navigate("/maquinas")}
+            className="group hover-3d"
+          >
+            Ver Todas as Máquinas
+            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Button>
         </div>
       </div>
     </section>

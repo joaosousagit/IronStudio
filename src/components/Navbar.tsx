@@ -23,6 +23,7 @@ export const Navbar = () => {
   const navLinks = [
     { id: "about", label: "Sobre" },
     { id: "gallery", label: "Galeria" },
+    { id: "machines", label: "Máquinas" },
     { id: "features", label: "Vantagens" },
     { id: "pricing", label: "Preços" },
     { id: "faq", label: "FAQ" },
