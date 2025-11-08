@@ -12,7 +12,7 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
+    <section id="contact" className="py-24 md:py-32 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-12">

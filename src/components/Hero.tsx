@@ -20,7 +20,7 @@ export const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center">
         {/* Logo */}
-        <div className="mb-8 inline-block">
+        <div className="mb-12 inline-block">
           <img 
             src={logo} 
             alt="Iron Studio Logo" 
@@ -28,7 +28,7 @@ export const Hero = () => {
           />
         </div>
 
-        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6 uppercase tracking-tight animate-slide-up">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8 uppercase tracking-tight animate-slide-up">
           <span className="bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent neon-text animate-gradient">
             Iron Studio
           </span>
@@ -36,13 +36,13 @@ export const Hero = () => {
           <span className="text-foreground drop-shadow-2xl">BB Club</span>
         </h1>
         
-        <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+        <p className="text-xl md:text-2xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed">
           Treina à tua maneira. Evolui ao teu ritmo.
           <br />
           Aberto com horário alargado.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
           <Button 
             variant="hero" 
             size="lg"
@@ -61,9 +61,9 @@ export const Hero = () => {
         </div>
 
         {/* Horário Badge */}
-        <div className="mt-12 inline-block animate-scale-in float">
+        <div className="mt-20 inline-block animate-scale-in float">
           <div className="glass-strong rounded-lg px-8 py-4 glow-pulse">
-            <p className="text-sm text-muted-foreground mb-1">Em Leiria</p>
+            <p className="text-sm text-muted-foreground mb-2">Em Leiria</p>
             <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
               Horário Mais Alargado
             </p>

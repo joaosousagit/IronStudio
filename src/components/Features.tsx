@@ -3,7 +3,7 @@ import image247 from "@/assets/gym-wall.jpg";
 
 export const Features = () => {
   return (
-    <section className="py-20 bg-gradient-to-b from-background to-card">
+    <section className="py-24 md:py-32 bg-gradient-to-b from-background to-card">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
