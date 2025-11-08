@@ -1,67 +1,69 @@
-import { Shield, Zap, Target } from "lucide-react";
+import { Dumbbell, Users, Clock, Trophy } from "lucide-react";
 import image247 from "@/assets/gym-wall.jpg";
 
 export const Features = () => {
   return (
-    <section className="py-24 bg-background">
+    <section className="py-24 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-20">
-          <h2 className="text-5xl md:text-6xl font-black mb-6 uppercase italic">
-            Porquê o <span className="text-primary">Iron Studio</span>?
-          </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-            Equipamento de elite. Ambiente privado. Zero distrações.
+        {/* Title Section */}
+        <div className="text-center mb-16">
+          <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
+            Porque é que é tão bom?
+          </h1>
+          <p className="text-2xl text-[hsl(var(--muted-foreground-light))] max-w-3xl mx-auto">
+            Ferro pesado e espelhos de corpo inteiro. Mais o quê?
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
-          <div className="bg-card border-2 border-border p-8 text-center hover:border-primary transition-all duration-300">
-            <div className="w-16 h-16 bg-primary flex items-center justify-center mx-auto mb-6">
-              <Shield className="w-8 h-8 text-primary-foreground" />
+        <p className="text-center text-xl mb-12 text-[hsl(var(--muted-foreground-light))]">No ginásio, vais encontrar:</p>
+
+        {/* Features Grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+              <Clock className="w-16 h-16 text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-4 uppercase">Ambiente Privado</h3>
-            <p className="text-muted-foreground">
-              Ginásio exclusivo para membros. Treina em paz, sem multidões.
-            </p>
+            <h5 className="text-xl font-bold uppercase mb-2">Horário Alargado</h5>
           </div>
 
-          <div className="bg-card border-2 border-border p-8 text-center hover:border-primary transition-all duration-300">
-            <div className="w-16 h-16 bg-primary flex items-center justify-center mx-auto mb-6">
-              <Zap className="w-8 h-8 text-primary-foreground" />
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+              <Users className="w-16 h-16 text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-4 uppercase">Zero Distrações</h3>
-            <p className="text-muted-foreground">
-              Foco total no treino. Uma comunidade dedicada ao ferro.
-            </p>
+            <h5 className="text-xl font-bold uppercase mb-2">Ambiente Privado</h5>
           </div>
 
-          <div className="bg-card border-2 border-border p-8 text-center hover:border-primary transition-all duration-300">
-            <div className="w-16 h-16 bg-primary flex items-center justify-center mx-auto mb-6">
-              <Target className="w-8 h-8 text-primary-foreground" />
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+              <Trophy className="w-16 h-16 text-primary" />
             </div>
-            <h3 className="text-2xl font-bold mb-4 uppercase">Só Resultados</h3>
-            <p className="text-muted-foreground">
-              Equipamento profissional. Atmosfera que inspira progressão.
-            </p>
+            <h5 className="text-xl font-bold uppercase mb-2">Excelentes Instalações</h5>
+          </div>
+
+          <div className="text-center">
+            <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+              <Dumbbell className="w-16 h-16 text-primary" />
+            </div>
+            <h5 className="text-xl font-bold uppercase mb-2">Equipamento Profissional</h5>
           </div>
         </div>
 
-        {/* 24/7 Feature Highlight */}
-        <div className="relative overflow-hidden grayscale-red">
+        {/* Quote Section with Background */}
+        <div className="relative h-96 overflow-hidden">
           <div 
             className="absolute inset-0 bg-cover bg-center"
-            style={{ backgroundImage: `url(${image247})` }}
+            style={{ 
+              backgroundImage: `url(${image247})`,
+              filter: 'grayscale(100%) contrast(1.1)'
+            }}
           />
-          <div className="absolute inset-0 bg-background/70"></div>
+          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
           
-          <div className="relative z-10 py-32 px-8 text-center">
-            <h3 className="text-7xl md:text-8xl font-black mb-6 uppercase italic text-foreground">
-              24/7
-            </h3>
-            <p className="text-3xl font-bold mb-4 uppercase tracking-wide">Sempre Aberto</p>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Treina quando quiseres. Sem desculpas.
-            </p>
+          <div className="relative z-10 h-full flex items-center justify-center px-8">
+            <h2 className="text-3xl md:text-5xl font-black uppercase text-center text-foreground max-w-4xl leading-tight">
+              Os campeões são feitos quando ninguém está a ver
+            </h2>
           </div>
         </div>
       </div>

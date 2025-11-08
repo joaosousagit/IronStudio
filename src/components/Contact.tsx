@@ -15,51 +15,51 @@ export const Contact = () => {
     <section id="contact" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
-              Junta-te a <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Nós</span>
-            </h2>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
+              Vem treinar num ginásio verdadeiramente hardcore
+            </h1>
             <p className="text-xl text-[hsl(var(--muted-foreground-light))]">
-              Pronto para fazer parte da comunidade Iron Studio?
+              Contacta-nos para mais informações
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Instagram Card */}
-            <div className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-8 hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
-                <InstagramIcon className="w-10 h-10" />
+            <div className="bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300">
+              <div className="w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                <InstagramIcon className="w-16 h-16" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-[hsl(var(--foreground-light))]">Segue-nos no Instagram</h3>
-              <p className="text-[hsl(var(--muted-foreground-light))] mb-6">
-                Vê as nossas instalações, conhece a comunidade e fica a par das novidades do Iron Studio.
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase text-center">Instagram</h3>
+              <p className="text-[hsl(var(--muted-foreground-light))] mb-6 text-center">
+                Segue-nos para veres as instalações e ficares a par das novidades.
               </p>
               <Button 
-                variant="hero" 
-                className="w-full" 
+                variant="default"
+                size="lg"
+                className="w-full uppercase font-bold tracking-wide" 
                 onClick={handleInstagramClick}
               >
-                <InstagramIcon className="mr-2 h-5 w-5" />
                 Ver Instagram
               </Button>
             </div>
 
             {/* WhatsApp Card */}
-            <div className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-8 hover:border-primary transition-[var(--transition-smooth)] shadow-[var(--shadow-elevated)]">
-              <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mb-6 shadow-lg">
-                <WhatsAppIcon className="w-10 h-10" />
+            <div className="bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300">
+              <div className="w-20 h-20 flex items-center justify-center mb-6 mx-auto">
+                <WhatsAppIcon className="w-16 h-16" />
               </div>
-              <h3 className="text-2xl font-bold mb-3 text-[hsl(var(--foreground-light))]">Fala Connosco</h3>
-              <p className="text-[hsl(var(--muted-foreground-light))] mb-6">
-                Tens dúvidas? Quer conhecer o espaço? Entra em contacto direto com o dono do ginásio.
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase text-center">WhatsApp</h3>
+              <p className="text-[hsl(var(--muted-foreground-light))] mb-6 text-center">
+                Contacta-nos diretamente para esclarecer dúvidas ou marcar visita.
               </p>
               <Button 
-                variant="hero" 
-                className="w-full" 
+                variant="default"
+                size="lg"
+                className="w-full uppercase font-bold tracking-wide" 
                 onClick={handleWhatsAppClick}
               >
-                <WhatsAppIcon className="mr-2 h-5 w-5" />
-                WhatsApp
+                Enviar Mensagem
               </Button>
             </div>
           </div>

@@ -34,32 +34,30 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-sm shadow-[var(--shadow-elevated)] border-b border-border"
-          : "bg-transparent"
+          ? "bg-background/98 backdrop-blur-sm border-b border-border"
+          : "bg-background/80 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            className="flex items-center gap-3 hover:opacity-80 transition-[var(--transition-smooth)]"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <img src={logo} alt="Iron Studio" className="h-12 w-auto" />
-            <span className="font-black text-xl uppercase hidden sm:block">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Iron Studio
-              </span>
+            <img src={logo} alt="Iron Studio" className="h-10 w-auto" />
+            <span className="font-black text-lg uppercase hidden sm:block text-foreground">
+              IRON STUDIO
             </span>
           </button>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-[var(--transition-smooth)] font-medium"
+                className="text-foreground hover:text-primary transition-colors font-bold uppercase text-sm tracking-wider"
               >
                 {link.label}
               </button>
@@ -77,12 +75,12 @@ export const Navbar = () => {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="md:hidden pb-4 animate-fade-in">
+          <div className="md:hidden pb-4 border-t border-border mt-2">
             {navLinks.map((link) => (
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 px-4 text-foreground hover:bg-card transition-[var(--transition-smooth)] font-medium"
+                className="block w-full text-left py-3 px-4 text-foreground hover:bg-card transition-colors font-bold uppercase text-sm"
               >
                 {link.label}
               </button>

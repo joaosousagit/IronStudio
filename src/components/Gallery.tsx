@@ -29,14 +29,12 @@ export const Gallery = () => {
     <>
       <section id="gallery" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-black mb-6 uppercase">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Tour Virtual
-              </span>
-            </h2>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
+              Uma imagem vale mais que mil palavras
+            </h1>
             <p className="text-xl text-muted-foreground">
-              Conhece as nossas instalações - Clica para ampliar
+              Neste caso temos {images.length} delas
             </p>
           </div>
 
@@ -44,19 +42,21 @@ export const Gallery = () => {
             {images.map((image, index) => (
               <div
                 key={index}
-                className="group relative aspect-square overflow-hidden rounded-lg glass hover-3d glow cursor-pointer"
+                className="group relative aspect-square overflow-hidden cursor-pointer bg-card border-2 border-border hover:border-primary transition-all duration-300"
                 onClick={() => setSelectedImage(image)}
               >
                 <img
                   src={image.src}
                   alt={image.alt}
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover"
+                  style={{ filter: 'grayscale(100%) contrast(1.1)' }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/80 to-transparent opacity-0 group-hover:opacity-100 transition-[var(--transition-smooth)] flex items-end justify-between p-6">
-                  <span className="glass px-4 py-2 rounded-full text-sm font-semibold text-primary">
-                    {image.category}
-                  </span>
-                  <ZoomIn className="w-6 h-6 text-primary" />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 right-0 bg-background/90 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                  <p className="text-sm font-bold uppercase text-center">{image.category}</p>
+                </div>
+                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn className="w-6 h-6 text-foreground" />
                 </div>
               </div>
             ))}
