@@ -69,8 +69,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'bebas': ['Bebas Neue', 'sans-serif'],
-        'barlow': ['Barlow Semi Condensed', 'sans-serif'],
+        'rajdhani': ['Rajdhani', 'sans-serif'],
+        'inter': ['Inter', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
