@@ -12,7 +12,7 @@ export const Pricing = () => {
   ];
 
   return (
-    <section id="pricing" className="py-24 md:py-32 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
+    <section id="pricing" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
