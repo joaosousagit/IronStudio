@@ -1,29 +1,17 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { useEffect, useState } from "react";
 import heroImage from "@/assets/gym-interior.jpg";
 
 export const Hero = () => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
-      {/* Background Image - Desaturated with Parallax */}
+      {/* Background Image - Desaturated */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center transition-transform duration-100"
+          className="absolute inset-0 bg-cover bg-center bg-fixed"
           style={{ 
             backgroundImage: `url(${heroImage})`,
             filter: 'grayscale(90%) contrast(1.1)',
-            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         <div className="absolute inset-0 bg-black/60"></div>
