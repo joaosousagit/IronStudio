@@ -72,12 +72,6 @@ export const Machines = () => {
     <section id="machines" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 mb-6 glass px-6 py-3 rounded-full">
-            <Award className="w-5 h-5 text-primary" />
-            <span className="text-sm font-semibold uppercase tracking-wider text-primary">
-              Equipamento Premium
-            </span>
-          </div>
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient neon-text">
               As Melhores Máquinas do Mercado
