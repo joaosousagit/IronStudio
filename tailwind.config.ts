@@ -69,8 +69,8 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       fontFamily: {
-        'anton': ['Anton', 'sans-serif'],
-        'roboto-condensed': ['Roboto Condensed', 'sans-serif'],
+        'bebas': ['Bebas Neue', 'sans-serif'],
+        'barlow': ['Barlow Semi Condensed', 'sans-serif'],
       },
       keyframes: {
         "accordion-down": {
