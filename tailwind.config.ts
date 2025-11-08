@@ -68,6 +68,10 @@ export default {
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+      fontFamily: {
+        'bebas': ['Bebas Neue', 'sans-serif'],
+        'barlow': ['Barlow Semi Condensed', 'sans-serif'],
+      },
       keyframes: {
         "accordion-down": {
           from: {
