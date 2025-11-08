@@ -8,10 +8,11 @@ export const Hero = () => {
       {/* Background Image - Desaturated */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center bg-fixed"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ 
             backgroundImage: `url(${heroImage})`,
             filter: 'grayscale(90%) contrast(1.1)',
+            willChange: 'transform'
           }}
         />
         <div className="absolute inset-0 bg-black/60"></div>
