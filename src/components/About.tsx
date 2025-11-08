@@ -50,11 +50,18 @@ export const About = () => {
             Sobre o <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Iron Studio</span>
           </h2>
             
-            <p className="text-lg text-[hsl(var(--muted-foreground-light))] mb-8">
+            <p className="text-lg text-[hsl(var(--muted-foreground-light))] mb-6 leading-relaxed">
               O Iron Studio não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
               com a musculação encontram o ambiente perfeito para evoluir. Sem multidões, sem distrações, 
               apenas ferro pesado e uma comunidade que partilha os mesmos objetivos.
             </p>
+
+            <div className="glass px-6 py-4 rounded-lg mb-8 border-l-4 border-primary">
+              <p className="text-[hsl(var(--foreground-light))] font-semibold mb-2">📍 Instalações Completas:</p>
+              <p className="text-[hsl(var(--muted-foreground-light))] text-sm leading-relaxed">
+                Zona de pesos livres • Máquinas profissionais • Área de cardio • Balneários com chuveiros • Estacionamento gratuito
+              </p>
+            </div>
 
             <div className="grid sm:grid-cols-2 gap-6">
               {features.map((feature, index) => {

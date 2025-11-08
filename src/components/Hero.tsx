@@ -60,13 +60,24 @@ export const Hero = () => {
           </Button>
         </div>
 
-        {/* Horário Badge */}
-        <div className="mt-20 inline-block animate-scale-in float">
-          <div className="glass-strong rounded-lg px-8 py-4 glow-pulse">
-            <p className="text-sm text-muted-foreground mb-2">Em Leiria</p>
-            <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
-              Horário Mais Alargado
-            </p>
+        {/* Info Badges */}
+        <div className="mt-20 flex flex-col sm:flex-row gap-6 justify-center items-center">
+          <div className="inline-block animate-scale-in float">
+            <div className="glass-strong rounded-lg px-8 py-4 glow-pulse">
+              <p className="text-sm text-muted-foreground mb-2">Em Leiria</p>
+              <p className="text-2xl md:text-3xl font-black bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent animate-gradient">
+                Horário Mais Alargado
+              </p>
+            </div>
+          </div>
+
+          <div className="inline-block animate-scale-in float" style={{ animationDelay: '0.2s' }}>
+            <div className="glass-strong rounded-lg px-8 py-4 glow">
+              <p className="text-sm text-muted-foreground mb-2">Comunidade Exclusiva</p>
+              <p className="text-2xl md:text-3xl font-black text-primary">
+                50+ Atletas
+              </p>
+            </div>
           </div>
         </div>
       </div>
