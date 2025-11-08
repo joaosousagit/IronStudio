@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { X, ZoomIn } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import gymInterior from "@/assets/gym-interior.jpg";
 import gymEquipment from "@/assets/gym-equipment.jpg";
 import gymWide from "@/assets/gym-wide.jpg";
@@ -15,6 +16,7 @@ interface GalleryImage {
 
 export const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null);
+  const titleReveal = useScrollReveal();
 
   const images: GalleryImage[] = [
     { src: gymInterior, alt: "Interior do Iron Studio", category: "Espaço" },
@@ -29,7 +31,10 @@ export const Gallery = () => {
     <>
       <section id="gallery" className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
+          <div 
+            ref={titleReveal.ref}
+            className={`text-center mb-16 scroll-reveal ${titleReveal.isVisible ? 'revealed' : ''}`}
+          >
             <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
               Uma imagem vale mais que mil palavras
             </h1>
@@ -39,12 +44,17 @@ export const Gallery = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {images.map((image, index) => (
-              <div
-                key={index}
-                className="group relative aspect-square overflow-hidden cursor-pointer bg-card border-2 border-border hover:border-primary transition-all duration-300"
-                onClick={() => setSelectedImage(image)}
-              >
+            {images.map((image, index) => {
+              const ImageCard = () => {
+                const cardReveal = useScrollReveal({ threshold: 0.1 });
+                return (
+                  <div
+                    ref={cardReveal.ref}
+                    key={index}
+                    className={`group relative aspect-square overflow-hidden cursor-pointer bg-card border-2 border-border hover:border-primary transition-all duration-300 scroll-scale ${cardReveal.isVisible ? 'revealed' : ''}`}
+                    style={{ transitionDelay: `${index * 0.1}s` }}
+                    onClick={() => setSelectedImage(image)}
+                  >
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -55,11 +65,14 @@ export const Gallery = () => {
                 <div className="absolute bottom-0 left-0 right-0 bg-background/90 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-300">
                   <p className="text-sm font-bold uppercase text-center">{image.category}</p>
                 </div>
-                <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <ZoomIn className="w-6 h-6 text-foreground" />
-                </div>
-              </div>
-            ))}
+                    <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <ZoomIn className="w-6 h-6 text-foreground" />
+                    </div>
+                  </div>
+                );
+              };
+              return <ImageCard key={index} />;
+            })}
           </div>
         </div>
       </section>

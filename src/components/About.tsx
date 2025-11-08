@@ -1,7 +1,12 @@
 import { Dumbbell, Users, Clock, Trophy } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import equipmentImage from "@/assets/gym-equipment.jpg";
 
 export const About = () => {
+  const titleReveal = useScrollReveal();
+  const imageReveal = useScrollReveal();
+  const contentReveal = useScrollReveal({ threshold: 0.2 });
+
   const features = [
     {
       icon: Dumbbell,
@@ -30,7 +35,10 @@ export const About = () => {
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Image */}
-          <div className="relative grayscale-red">
+          <div 
+            ref={imageReveal.ref}
+            className={`relative grayscale-red scroll-slide-left ${imageReveal.isVisible ? 'revealed' : ''}`}
+          >
             <div className="aspect-square overflow-hidden">
               <img 
                 src={equipmentImage} 
@@ -45,7 +53,10 @@ export const About = () => {
           </div>
 
           {/* Content */}
-          <div>
+          <div 
+            ref={contentReveal.ref}
+            className={`scroll-slide-right ${contentReveal.isVisible ? 'revealed' : ''}`}
+          >
           <h2 className="text-5xl md:text-6xl font-black mb-8 uppercase italic">
             Sobre o <span className="text-primary">Iron Studio</span>
           </h2>

@@ -1,12 +1,19 @@
 import { Dumbbell, Users, Clock, Trophy } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import image247 from "@/assets/gym-wall.jpg";
 
 export const Features = () => {
+  const titleReveal = useScrollReveal();
+  const quoteReveal = useScrollReveal();
+  
   return (
     <section className="py-24 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         {/* Title Section */}
-        <div className="text-center mb-16">
+        <div 
+          ref={titleReveal.ref}
+          className={`text-center mb-16 scroll-reveal ${titleReveal.isVisible ? 'revealed' : ''}`}
+        >
           <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
             Porque é que é tão bom?
           </h1>
@@ -49,7 +56,10 @@ export const Features = () => {
         </div>
 
         {/* Quote Section with Background */}
-        <div className="relative h-96 overflow-hidden">
+        <div 
+          ref={quoteReveal.ref}
+          className={`relative h-96 overflow-hidden scroll-scale ${quoteReveal.isVisible ? 'revealed' : ''}`}
+        >
           <div 
             className="absolute inset-0 bg-cover bg-center"
             style={{ 

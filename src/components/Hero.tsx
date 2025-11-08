@@ -1,17 +1,29 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
+import { useEffect, useState } from "react";
 import heroImage from "@/assets/gym-interior.jpg";
 
 export const Hero = () => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
-      {/* Background Image - Desaturated */}
+      {/* Background Image - Desaturated with Parallax */}
       <div className="absolute inset-0">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center transition-transform duration-100"
           style={{ 
             backgroundImage: `url(${heroImage})`,
-            filter: 'grayscale(90%) contrast(1.1)'
+            filter: 'grayscale(90%) contrast(1.1)',
+            transform: `translateY(${scrollY * 0.5}px)`,
           }}
         />
         <div className="absolute inset-0 bg-black/60"></div>
@@ -21,12 +33,12 @@ export const Hero = () => {
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
           {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal mb-16 text-foreground text-center leading-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal mb-16 text-foreground text-center leading-tight animate-fade-in">
             Aberto com horário alargado.
           </h1>
 
           {/* Buttons Row */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Button 
               size="lg"
               className="bg-[#D1D5DB] hover:bg-[#B8BCC3] text-black font-black uppercase text-sm tracking-wider px-8 py-7 rounded-lg min-w-[280px] shadow-lg"
@@ -47,7 +59,7 @@ export const Hero = () => {
           </div>
 
           {/* Info Card */}
-          <div className="max-w-2xl mx-auto">
+          <div className="max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
             <div className="bg-black/70 backdrop-blur-sm rounded-2xl p-10 text-center border border-white/10">
               <p className="text-sm text-gray-400 mb-3 uppercase tracking-widest">Em Leiria</p>
               <h2 className="text-4xl md:text-5xl font-bold text-white">

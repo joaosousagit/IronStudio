@@ -1,8 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Mail, MapPin } from "lucide-react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { InstagramIcon, WhatsAppIcon } from "./SocialIcons";
 
 export const Contact = () => {
+  const titleReveal = useScrollReveal();
+  const card1Reveal = useScrollReveal({ threshold: 0.2 });
+  const card2Reveal = useScrollReveal({ threshold: 0.2 });
+  const infoReveal = useScrollReveal({ threshold: 0.2 });
+  
   const handleInstagramClick = () => {
     window.open('https://www.instagram.com/ironstudio_bbclub', '_blank');
   };
@@ -15,7 +21,10 @@ export const Contact = () => {
     <section id="contact" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
+          <div 
+            ref={titleReveal.ref}
+            className={`text-center mb-16 scroll-reveal ${titleReveal.isVisible ? 'revealed' : ''}`}
+          >
             <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
               Vem treinar num ginásio verdadeiramente hardcore
             </h1>
@@ -26,7 +35,10 @@ export const Contact = () => {
 
           <div className="grid md:grid-cols-2 gap-8 mb-12">
             {/* Instagram Card */}
-            <div className="bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300">
+            <div 
+              ref={card1Reveal.ref}
+              className={`bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300 scroll-slide-left ${card1Reveal.isVisible ? 'revealed' : ''}`}
+            >
               <div className="w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                 <InstagramIcon className="w-16 h-16" />
               </div>
@@ -45,7 +57,10 @@ export const Contact = () => {
             </div>
 
             {/* WhatsApp Card */}
-            <div className="bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300">
+            <div 
+              ref={card2Reveal.ref}
+              className={`bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:border-primary transition-all duration-300 scroll-slide-right ${card2Reveal.isVisible ? 'revealed' : ''}`}
+            >
               <div className="w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                 <WhatsAppIcon className="w-16 h-16" />
               </div>
@@ -65,7 +80,10 @@ export const Contact = () => {
           </div>
 
           {/* Additional Info */}
-          <div className="bg-white border border-[hsl(var(--border-light))] rounded-lg p-8 shadow-[var(--shadow-elevated)]">
+          <div 
+            ref={infoReveal.ref}
+            className={`bg-white border border-[hsl(var(--border-light))] rounded-lg p-8 shadow-[var(--shadow-elevated)] scroll-scale ${infoReveal.isVisible ? 'revealed' : ''}`}
+          >
             <div className="grid md:grid-cols-2 gap-6">
               <div className="flex items-start gap-4">
                 <Mail className="w-6 h-6 text-primary mt-1" />
