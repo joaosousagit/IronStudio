@@ -25,7 +25,7 @@ export const About = () => {
     },
     {
       icon: Trophy,
-      title: "Resultados Reais",
+      title: "Resultados",
       description: "Ambiente focado em progressão, ganhos reais e superação de limites. Sem distrações."
     }
   ];
