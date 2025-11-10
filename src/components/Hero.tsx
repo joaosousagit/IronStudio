@@ -20,36 +20,34 @@ export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
       {/* Background Carousel */}
-      <div className="absolute inset-0">
-        <Carousel
-          opts={{
-            loop: true,
-            duration: 40,
-          }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-              stopOnInteraction: false,
-            }),
-          ]}
-          className="w-full h-full"
-        >
-          <CarouselContent className="h-full">
-            {heroImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <div 
-                  className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
-                  style={{ 
-                    backgroundImage: `url(${image})`,
-                    filter: 'grayscale(90%) contrast(1.1)',
-                  }}
-                />
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-        <div className="absolute inset-0 bg-black/60"></div>
-      </div>
+      <Carousel
+        opts={{
+          loop: true,
+          duration: 40,
+        }}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+            stopOnInteraction: false,
+          }),
+        ]}
+        className="absolute inset-0"
+      >
+        <CarouselContent className="absolute inset-0 h-full">
+          {heroImages.map((image, index) => (
+            <CarouselItem key={index} className="relative min-w-full h-full">
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                style={{ 
+                  backgroundImage: `url(${image})`,
+                  filter: 'grayscale(90%) contrast(1.1)',
+                }}
+              />
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+      <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
