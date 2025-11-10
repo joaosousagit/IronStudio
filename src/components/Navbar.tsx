@@ -34,8 +34,8 @@ export const Navbar = () => {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
-          ? "bg-black/95 backdrop-blur-sm border-b border-border/20"
-          : "bg-black/80 backdrop-blur-sm"
+          ? "bg-background/98 backdrop-blur-sm border-b border-border"
+          : "bg-background/80 backdrop-blur-sm"
       }`}
     >
       <div className="container mx-auto px-4">
@@ -46,7 +46,7 @@ export const Navbar = () => {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <img src={logo} alt="Iron Studio" className="h-10 w-auto" />
-            <span className="font-black text-lg uppercase hidden sm:block text-foreground">
+            <span className="font-black text-lg uppercase hidden sm:block text-gray-900 dark:text-white">
               IRON STUDIO
             </span>
           </button>
@@ -57,7 +57,7 @@ export const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-foreground hover:text-primary transition-colors font-bold uppercase text-sm tracking-wider"
+                className="text-gray-900 dark:text-white hover:text-primary transition-colors font-bold uppercase text-sm tracking-wider"
               >
                 {link.label}
               </button>
@@ -66,7 +66,7 @@ export const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-foreground"
+            className="md:hidden text-gray-900 dark:text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -80,7 +80,7 @@ export const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 px-4 text-foreground hover:bg-card transition-colors font-bold uppercase text-sm"
+                className="block w-full text-left py-3 px-4 text-gray-900 dark:text-white hover:bg-card transition-colors font-bold uppercase text-sm"
               >
                 {link.label}
               </button>
