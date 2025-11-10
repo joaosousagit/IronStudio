@@ -1,7 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
-import Autoplay from "embla-carousel-autoplay";
+import { useState, useEffect } from "react";
 import gymInterior from "@/assets/gym-interior.jpg";
 import gymWide from "@/assets/gym-wide.jpg";
 import athleteFocus from "@/assets/athlete-focus.jpg";
@@ -17,36 +16,32 @@ const heroImages = [
 ];
 
 export const Hero = () => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
-      {/* Background Carousel */}
-      <Carousel
-        opts={{
-          loop: true,
-          duration: 50,
-        }}
-        plugins={[
-          Autoplay({
-            delay: 6000,
-            stopOnInteraction: false,
-          }),
-        ]}
-        className="absolute inset-0"
-      >
-        <CarouselContent className="absolute inset-0 h-full">
-          {heroImages.map((image, index) => (
-            <CarouselItem key={index} className="relative min-w-full h-full">
-              <div 
-                className="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ease-in-out"
-                style={{ 
-                  backgroundImage: `url(${image})`,
-                  filter: 'grayscale(90%) contrast(1.1)',
-                }}
-              />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-      </Carousel>
+      {/* Background Images with Crossfade */}
+      <div className="absolute inset-0">
+        {heroImages.map((image, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 bg-cover bg-center transition-opacity duration-[1500ms] ease-in-out"
+            style={{
+              backgroundImage: `url(${image})`,
+              filter: 'grayscale(90%) contrast(1.1)',
+              opacity: currentImageIndex === index ? 1 : 0,
+            }}
+          />
+        ))}
+      </div>
       <div className="absolute inset-0 bg-black/60 pointer-events-none"></div>
 
       {/* Content */}
