@@ -1,20 +1,53 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import heroImage from "@/assets/gym-interior.jpg";
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel";
+import Autoplay from "embla-carousel-autoplay";
+import gymInterior from "@/assets/gym-interior.jpg";
+import gymWide from "@/assets/gym-wide.jpg";
+import athleteFocus from "@/assets/athlete-focus.jpg";
+import equipment from "@/assets/gym-equipment-wide.jpg";
+import hardcoreBodybuilding from "@/assets/hardcore-bodybuilding.jpg";
+
+const heroImages = [
+  gymInterior,
+  gymWide,
+  athleteFocus,
+  equipment,
+  hardcoreBodybuilding
+];
 
 export const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20 pb-32">
-      {/* Background Image - Desaturated */}
+      {/* Background Carousel */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ 
-            backgroundImage: `url(${heroImage})`,
-            filter: 'grayscale(90%) contrast(1.1)',
-            willChange: 'transform'
+        <Carousel
+          opts={{
+            loop: true,
+            duration: 40,
           }}
-        />
+          plugins={[
+            Autoplay({
+              delay: 5000,
+              stopOnInteraction: false,
+            }),
+          ]}
+          className="w-full h-full"
+        >
+          <CarouselContent className="h-full">
+            {heroImages.map((image, index) => (
+              <CarouselItem key={index} className="h-full">
+                <div 
+                  className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                  style={{ 
+                    backgroundImage: `url(${image})`,
+                    filter: 'grayscale(90%) contrast(1.1)',
+                  }}
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
         <div className="absolute inset-0 bg-black/60"></div>
       </div>
 
