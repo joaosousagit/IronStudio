@@ -100,24 +100,9 @@ export const Machines = () => {
                     <h3 className="text-2xl font-black mb-3 uppercase tracking-wide">
                       {item.name}
                     </h3>
-                    <p className="text-[hsl(var(--muted-foreground-light))] mb-4 text-sm">
+                    <p className="text-[hsl(var(--muted-foreground-light))] text-sm">
                       {item.description}
                     </p>
-                    <div className="space-y-2">
-                      <p className="text-xs text-[hsl(var(--muted-foreground-light))] uppercase tracking-wider font-semibold">
-                        Músculos trabalhados:
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {item.muscle_groups.map((muscle, idx) => (
-                          <span 
-                            key={idx} 
-                            className="text-xs px-3 py-1 bg-[hsl(var(--muted-light))] rounded-full text-[hsl(var(--foreground-light))]"
-                          >
-                            {muscle}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
                   </div>
                 </div>
               );
