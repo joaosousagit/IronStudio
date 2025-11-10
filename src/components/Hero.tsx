@@ -52,11 +52,6 @@ export const Hero = () => {
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4">
         <div className="max-w-5xl mx-auto">
-          {/* Main Headline */}
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal mb-16 text-foreground text-center leading-tight animate-fade-in">
-            Treina quando quiseres.
-          </h1>
-
           {/* Buttons Row */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Button 
