@@ -129,7 +129,7 @@ const MachinesPage = () => {
                         {item.brand}
                       </span>
                     </div>
-                    <h3 className="text-2xl font-black mb-3 uppercase">
+                    <h3 className="text-2xl font-black mb-3 uppercase tracking-wide">
                       {item.name}
                     </h3>
                     <p className="text-muted-foreground mb-4 text-sm">
