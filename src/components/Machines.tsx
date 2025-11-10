@@ -73,7 +73,7 @@ export const Machines = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
-            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient neon-text">
+            <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient">
               As Melhores Máquinas do Mercado
             </span>
           </h2>
