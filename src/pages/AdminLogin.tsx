@@ -58,13 +58,14 @@ export default function AdminLogin() {
       } else if (data.user) {
         toast({
           title: "Conta criada com sucesso!",
-          description: "Agora você precisa adicionar o role de admin. Veja as instruções abaixo.",
-          duration: 10000,
+          description: "O primeiro usuário é automaticamente admin. Faça login para acessar.",
+          duration: 5000,
         });
         
-        // Mostrar o user ID para o usuário adicionar o role
-        console.log("User ID:", data.user.id);
-        alert(`Conta criada! Seu User ID é: ${data.user.id}\n\nAgora você precisa executar este SQL no backend:\n\nINSERT INTO user_roles (user_id, role)\nVALUES ('${data.user.id}', 'admin');`);
+        // Mudar automaticamente para o modo login
+        setTimeout(() => {
+          setIsSignUp(false);
+        }, 2000);
       }
     } else {
       const { error } = await supabase.auth.signInWithPassword({
