@@ -54,7 +54,7 @@ export const Hero = () => {
         <div className="max-w-5xl mx-auto">
           {/* Main Headline */}
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-normal mb-16 text-foreground text-center leading-tight animate-fade-in">
-            Aberto com horário alargado.
+            Treina quando quiseres.
           </h1>
 
           {/* Buttons Row */}
