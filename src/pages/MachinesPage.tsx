@@ -24,7 +24,7 @@ interface Machine {
 
 const MachinesPage = () => {
   const navigate = useNavigate();
-  const { isAdmin, loading: authLoading, signOut } = useAuth();
+  const { user, isAdmin, loading: authLoading, signOut } = useAuth();
   const { toast } = useToast();
   const [machines, setMachines] = useState<Machine[]>([]);
   const [loading, setLoading] = useState(true);
@@ -32,8 +32,17 @@ const MachinesPage = () => {
   const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
 
   useEffect(() => {
-    fetchMachines();
-  }, []);
+    // Redirecionar para login se não estiver autenticado
+    if (!authLoading && !user) {
+      navigate("/admin/login");
+    }
+  }, [user, authLoading, navigate]);
+
+  useEffect(() => {
+    if (user) {
+      fetchMachines();
+    }
+  }, [user]);
 
   const fetchMachines = async () => {
     try {

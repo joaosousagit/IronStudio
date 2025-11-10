@@ -12,6 +12,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Upload } from "lucide-react";
 
 interface Machine {
   id?: string;
@@ -34,6 +36,8 @@ interface MachineDialogProps {
 export const MachineDialog = ({ open, onOpenChange, machine, onSuccess }: MachineDialogProps) => {
   const { toast } = useToast();
   const [loading, setLoading] = useState(false);
+  const [uploadMode, setUploadMode] = useState<"url" | "file">("url");
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [formData, setFormData] = useState<Machine>({
     name: "",
     brand: "",
@@ -58,17 +62,60 @@ export const MachineDialog = ({ open, onOpenChange, machine, onSuccess }: Machin
         display_order: 0,
       });
     }
+    setSelectedFile(null);
+    setUploadMode("url");
   }, [machine, open]);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
+  };
+
+  const uploadFile = async (file: File): Promise<string> => {
+    const fileExt = file.name.split('.').pop();
+    const fileName = `${Math.random().toString(36).substring(2)}.${fileExt}`;
+    const filePath = `${fileName}`;
+
+    const { error: uploadError } = await supabase.storage
+      .from('machine-images')
+      .upload(filePath, file);
+
+    if (uploadError) throw uploadError;
+
+    const { data } = supabase.storage
+      .from('machine-images')
+      .getPublicUrl(filePath);
+
+    return data.publicUrl;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
 
     try {
+      let imageUrl = formData.image_url;
+
+      // Se está em modo de upload e há um arquivo selecionado
+      if (uploadMode === "file" && selectedFile) {
+        imageUrl = await uploadFile(selectedFile);
+      }
+
+      // Validar se há uma imagem (URL ou arquivo)
+      if (!imageUrl) {
+        throw new Error("Por favor, forneça uma imagem (URL ou arquivo)");
+      }
+
+      const dataToSave = {
+        ...formData,
+        image_url: imageUrl,
+      };
+
       if (machine?.id) {
         const { error } = await supabase
           .from("machines")
-          .update(formData)
+          .update(dataToSave)
           .eq("id", machine.id);
 
         if (error) throw error;
@@ -80,7 +127,7 @@ export const MachineDialog = ({ open, onOpenChange, machine, onSuccess }: Machin
       } else {
         const { error } = await supabase
           .from("machines")
-          .insert([formData]);
+          .insert([dataToSave]);
 
         if (error) throw error;
 
@@ -151,14 +198,40 @@ export const MachineDialog = ({ open, onOpenChange, machine, onSuccess }: Machin
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="image_url">URL da Imagem</Label>
-            <Input
-              id="image_url"
-              value={formData.image_url}
-              onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
-              required
-              placeholder="https://..."
-            />
+            <Label>Imagem da Máquina</Label>
+            <Tabs value={uploadMode} onValueChange={(v) => setUploadMode(v as "url" | "file")}>
+              <TabsList className="grid w-full grid-cols-2">
+                <TabsTrigger value="url">URL</TabsTrigger>
+                <TabsTrigger value="file">Upload</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="url" className="space-y-2">
+                <Input
+                  id="image_url"
+                  value={formData.image_url}
+                  onChange={(e) => setFormData({ ...formData, image_url: e.target.value })}
+                  placeholder="https://..."
+                />
+              </TabsContent>
+              
+              <TabsContent value="file" className="space-y-2">
+                <div className="flex items-center gap-2">
+                  <Input
+                    id="image_file"
+                    type="file"
+                    accept="image/jpeg,image/png,image/webp,image/jpg"
+                    onChange={handleFileChange}
+                    className="cursor-pointer"
+                  />
+                  <Upload className="w-4 h-4 text-muted-foreground" />
+                </div>
+                {selectedFile && (
+                  <p className="text-sm text-muted-foreground">
+                    Arquivo selecionado: {selectedFile.name}
+                  </p>
+                )}
+              </TabsContent>
+            </Tabs>
           </div>
 
           <div className="space-y-2">
