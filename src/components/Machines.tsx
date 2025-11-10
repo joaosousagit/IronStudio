@@ -17,6 +17,11 @@ interface MachineItem {
 export const Machines = () => {
   const navigate = useNavigate();
   
+  const handleNavigate = () => {
+    navigate("/maquinas");
+    window.scrollTo(0, 0);
+  };
+  
   const machines: MachineItem[] = [
     {
       name: "Leg Press 45°",
@@ -138,7 +143,7 @@ export const Machines = () => {
         <div className="text-center mt-12">
           <Button
             size="lg"
-            onClick={() => navigate("/maquinas")}
+            onClick={handleNavigate}
             className="group hover-3d"
           >
             Ver Todas as Máquinas

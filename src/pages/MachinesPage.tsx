@@ -94,7 +94,7 @@ const MachinesPage = () => {
               </span>
             </div>
             <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient neon-text">
+              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient">
                 As Melhores Máquinas do Mercado
               </span>
             </h1>
