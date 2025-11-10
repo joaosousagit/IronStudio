@@ -23,11 +23,11 @@ export const Hero = () => {
       <Carousel
         opts={{
           loop: true,
-          duration: 40,
+          duration: 50,
         }}
         plugins={[
           Autoplay({
-            delay: 5000,
+            delay: 6000,
             stopOnInteraction: false,
           }),
         ]}
@@ -37,7 +37,7 @@ export const Hero = () => {
           {heroImages.map((image, index) => (
             <CarouselItem key={index} className="relative min-w-full h-full">
               <div 
-                className="absolute inset-0 bg-cover bg-center transition-opacity duration-1000"
+                className="absolute inset-0 bg-cover bg-center transition-all duration-[2000ms] ease-in-out"
                 style={{ 
                   backgroundImage: `url(${image})`,
                   filter: 'grayscale(90%) contrast(1.1)',
