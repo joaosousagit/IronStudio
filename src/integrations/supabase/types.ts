@@ -38,6 +38,45 @@ export type Database = {
         }
         Relationships: []
       }
+      machines: {
+        Row: {
+          brand: string
+          created_at: string
+          description: string
+          display_order: number
+          icon_name: string
+          id: string
+          image_url: string
+          muscle_groups: string[]
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          brand: string
+          created_at?: string
+          description: string
+          display_order?: number
+          icon_name: string
+          id?: string
+          image_url: string
+          muscle_groups: string[]
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          brand?: string
+          created_at?: string
+          description?: string
+          display_order?: number
+          icon_name?: string
+          id?: string
+          image_url?: string
+          muscle_groups?: string[]
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       pricing_plans: {
         Row: {
           created_at: string

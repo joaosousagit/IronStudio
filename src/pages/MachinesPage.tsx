@@ -1,75 +1,119 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Dumbbell, Award, Activity, Bike, TrendingUp } from "lucide-react";
+import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import equipmentImg from "@/assets/gym-equipment.jpg";
-import hardcoreImg from "@/assets/hardcore-bodybuilding.jpg";
-import athleteFocusImg from "@/assets/athlete-focus.jpg";
+import { useState, useEffect } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
+import { MachineDialog } from "@/components/MachineDialog";
+import { useToast } from "@/hooks/use-toast";
+import * as Icons from "lucide-react";
 
-interface MachineItem {
+interface Machine {
+  id: string;
   name: string;
   brand: string;
   description: string;
-  image: string;
-  muscleGroups: string[];
-  icon: any;
+  image_url: string;
+  muscle_groups: string[];
+  icon_name: string;
+  display_order: number;
 }
 
 const MachinesPage = () => {
   const navigate = useNavigate();
+  const { isAdmin, loading: authLoading, signOut } = useAuth();
+  const { toast } = useToast();
+  const [machines, setMachines] = useState<Machine[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
 
-  const machines: MachineItem[] = [
-    {
-      name: "Leg Press 45°",
-      brand: "Technogym",
-      description: "Prensa de pernas profissional para treino de membros inferiores",
-      image: equipmentImg,
-      muscleGroups: ["Quadricípites", "Glúteos", "Isquiotibiais"],
-      icon: TrendingUp,
-    },
-    {
-      name: "Smith Machine",
-      brand: "Life Fitness",
-      description: "Barra guiada para agachamentos e supino com segurança máxima",
-      image: hardcoreImg,
-      muscleGroups: ["Peito", "Pernas", "Ombros"],
-      icon: Dumbbell,
-    },
-    {
-      name: "Cable Crossover",
-      brand: "Matrix",
-      description: "Sistema de cabos duplos para treino funcional completo",
-      image: equipmentImg,
-      muscleGroups: ["Peito", "Costas", "Core"],
-      icon: Activity,
-    },
-    {
-      name: "Elíptica Premium",
-      brand: "Precor",
-      description: "Cardio de baixo impacto com programas personalizados",
-      image: athleteFocusImg,
-      muscleGroups: ["Corpo inteiro", "Cardio"],
-      icon: Bike,
-    },
-    {
-      name: "Pec Deck",
-      brand: "Hammer Strength",
-      description: "Máquina de abertura de peito com movimento isolado",
-      image: equipmentImg,
-      muscleGroups: ["Peitoral", "Ombros anteriores"],
-      icon: Dumbbell,
-    },
-    {
-      name: "Hack Squat",
-      brand: "Body-Solid",
-      description: "Agachamento guiado para desenvolvimento de pernas",
-      image: hardcoreImg,
-      muscleGroups: ["Quadricípites", "Glúteos"],
-      icon: TrendingUp,
-    },
-  ];
+  useEffect(() => {
+    fetchMachines();
+  }, []);
+
+  const fetchMachines = async () => {
+    try {
+      const { data, error } = await supabase
+        .from("machines")
+        .select("*")
+        .order("display_order", { ascending: true });
+
+      if (error) throw error;
+      setMachines(data || []);
+    } catch (error: any) {
+      toast({
+        title: "Erro ao carregar máquinas",
+        description: error.message,
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleDelete = async (id: string) => {
+    if (!confirm("Tem certeza que deseja excluir esta máquina?")) return;
+
+    try {
+      const { error } = await supabase
+        .from("machines")
+        .delete()
+        .eq("id", id);
+
+      if (error) throw error;
+
+      toast({
+        title: "Máquina excluída",
+        description: "A máquina foi excluída com sucesso.",
+      });
+
+      fetchMachines();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao excluir",
+        description: error.message,
+        variant: "destructive",
+      });
+    }
+  };
+
+  const handleEdit = (machine: Machine) => {
+    setEditingMachine(machine);
+    setDialogOpen(true);
+  };
+
+  const handleAdd = () => {
+    setEditingMachine(null);
+    setDialogOpen(true);
+  };
+
+  const handleDialogClose = () => {
+    setDialogOpen(false);
+    setEditingMachine(null);
+  };
+
+  const handleSignOut = async () => {
+    await signOut();
+    toast({
+      title: "Sessão encerrada",
+      description: "Você saiu com sucesso.",
+    });
+  };
+
+  if (loading || authLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p className="text-muted-foreground">Carregando...</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
@@ -77,14 +121,29 @@ const MachinesPage = () => {
       
       <section className="pt-32 pb-20 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
-          <Button
-            variant="ghost"
-            onClick={() => navigate("/")}
-            className="mb-8 group"
-          >
-            <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            Voltar ao Início
-          </Button>
+          <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
+            <Button
+              variant="ghost"
+              onClick={() => navigate("/")}
+              className="group"
+            >
+              <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
+              Voltar ao Início
+            </Button>
+
+            {isAdmin && (
+              <div className="flex gap-2">
+                <Button onClick={handleAdd} className="gap-2">
+                  <Plus className="w-4 h-4" />
+                  Adicionar Máquina
+                </Button>
+                <Button onClick={handleSignOut} variant="outline" className="gap-2">
+                  <LogOut className="w-4 h-4" />
+                  Sair
+                </Button>
+              </div>
+            )}
+          </div>
 
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 mb-4 glass px-6 py-3 rounded-full">
@@ -104,16 +163,16 @@ const MachinesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {machines.map((item, index) => {
-              const IconComponent = item.icon;
+            {machines.map((item) => {
+              const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
               return (
                 <div
-                  key={index}
+                  key={item.id}
                   className="glass-strong hover-3d glow group overflow-hidden rounded-2xl"
                 >
                   <div className="relative h-64 overflow-hidden">
                     <img
-                      src={item.image}
+                      src={item.image_url}
                       alt={item.name}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     />
@@ -121,6 +180,27 @@ const MachinesPage = () => {
                     <div className="absolute top-4 right-4 glass px-4 py-2 rounded-full">
                       <IconComponent className="w-5 h-5 text-primary glow-pulse" />
                     </div>
+                    
+                    {isAdmin && (
+                      <div className="absolute top-4 left-4 flex gap-2">
+                        <Button
+                          size="sm"
+                          variant="secondary"
+                          onClick={() => handleEdit(item)}
+                          className="glass"
+                        >
+                          <Pencil className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          size="sm"
+                          variant="destructive"
+                          onClick={() => handleDelete(item.id)}
+                          className="glass"
+                        >
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    )}
                   </div>
 
                   <div className="p-6">
@@ -140,7 +220,7 @@ const MachinesPage = () => {
                         Músculos trabalhados:
                       </p>
                       <div className="flex flex-wrap gap-2">
-                        {item.muscleGroups.map((muscle, idx) => (
+                        {item.muscle_groups.map((muscle, idx) => (
                           <span 
                             key={idx} 
                             className="text-xs px-3 py-1 glass rounded-full text-foreground/80"
@@ -165,6 +245,13 @@ const MachinesPage = () => {
       </section>
 
       <Footer />
+      
+      <MachineDialog
+        open={dialogOpen}
+        onOpenChange={handleDialogClose}
+        machine={editingMachine}
+        onSuccess={fetchMachines}
+      />
     </div>
   );
 };
