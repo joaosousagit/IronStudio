@@ -46,7 +46,7 @@ export const Navbar = () => {
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
             <img src={logo} alt="Iron Studio" className="h-10 w-auto" />
-            <span className="font-black text-lg uppercase hidden sm:block text-gray-900 dark:text-white">
+            <span className="font-black text-lg uppercase hidden sm:block text-white" style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5)' }}>
               IRON STUDIO
             </span>
           </button>
@@ -57,7 +57,8 @@ export const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="text-gray-900 dark:text-white hover:text-primary transition-colors font-bold uppercase text-sm tracking-wider"
+                className="text-white hover:text-primary transition-colors font-bold uppercase text-sm tracking-wider"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.5)' }}
               >
                 {link.label}
               </button>
@@ -66,7 +67,8 @@ export const Navbar = () => {
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden text-gray-900 dark:text-white"
+            className="md:hidden text-white"
+            style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))' }}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -80,7 +82,8 @@ export const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => scrollToSection(link.id)}
-                className="block w-full text-left py-3 px-4 text-gray-900 dark:text-white hover:bg-card transition-colors font-bold uppercase text-sm"
+                className="block w-full text-left py-3 px-4 text-white hover:bg-card transition-colors font-bold uppercase text-sm"
+                style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}
               >
                 {link.label}
               </button>
