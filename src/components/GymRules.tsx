@@ -76,10 +76,13 @@ export const GymRules = () => {
           })}
         </div>
 
-        <div className="text-center mt-12 glass-strong rounded-lg p-6 max-w-2xl mx-auto">
-          <p className="text-[hsl(var(--foreground-light))] font-semibold">
-            💪 Seguir estas regras garante que todos tenham a melhor experiência possível no Iron Studio.
-          </p>
+        <div className="text-center mt-12 bg-gradient-to-r from-primary/10 via-accent/10 to-primary/10 border-2 border-primary/20 rounded-lg p-8 max-w-3xl mx-auto">
+          <div className="flex items-center justify-center gap-3">
+            <span className="text-4xl">💪</span>
+            <p className="text-lg text-[hsl(var(--foreground-light))] font-semibold">
+              Seguir estas regras garante que todos tenham a melhor experiência possível no Iron Studio.
+            </p>
+          </div>
         </div>
       </div>
     </section>
