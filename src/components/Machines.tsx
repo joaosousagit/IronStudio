@@ -122,27 +122,12 @@ export const Machines = () => {
       </div>
 
       <Dialog open={!!selectedMachine} onOpenChange={() => setSelectedMachine(null)}>
-        <DialogContent className="max-w-4xl">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-black uppercase">
-              {selectedMachine?.name}
-            </DialogTitle>
-          </DialogHeader>
-          <div className="relative">
-            <img 
-              src={selectedMachine?.image_url} 
-              alt={selectedMachine?.name} 
-              className="w-full h-auto rounded-lg"
-            />
-          </div>
-          <div className="space-y-2">
-            <p className="text-sm text-primary font-semibold uppercase tracking-wider">
-              {selectedMachine?.brand}
-            </p>
-            <p className="text-muted-foreground">
-              {selectedMachine?.description}
-            </p>
-          </div>
+        <DialogContent className="max-w-5xl p-0 border-0">
+          <img 
+            src={selectedMachine?.image_url} 
+            alt={selectedMachine?.name} 
+            className="w-full h-auto rounded-lg"
+          />
         </DialogContent>
       </Dialog>
     </section>;
