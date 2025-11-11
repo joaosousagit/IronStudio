@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { MachineDialog } from "@/components/MachineDialog";
 import { useToast } from "@/hooks/use-toast";
 import * as Icons from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 interface Machine {
   id: string;
   name: string;
@@ -36,6 +37,7 @@ const MachinesPage = () => {
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
+  const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null);
   useEffect(() => {
     fetchMachines();
   }, []);
@@ -183,7 +185,10 @@ const MachinesPage = () => {
             {machines.map(item => {
             const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
             return <div key={item.id} className="glass-strong hover-3d glow group overflow-hidden rounded-2xl">
-                  <div className="relative h-64 overflow-hidden">
+                  <div 
+                    className="relative h-64 overflow-hidden cursor-pointer"
+                    onClick={() => !isAdmin && setSelectedMachine(item)}
+                  >
                     <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
                     
@@ -244,6 +249,31 @@ const MachinesPage = () => {
       <Footer />
       
       <MachineDialog open={dialogOpen} onOpenChange={handleDialogClose} machine={editingMachine} onSuccess={fetchMachines} />
+      
+      <Dialog open={!!selectedMachine} onOpenChange={() => setSelectedMachine(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-black uppercase">
+              {selectedMachine?.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <img 
+              src={selectedMachine?.image_url} 
+              alt={selectedMachine?.name} 
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-primary font-semibold uppercase tracking-wider">
+              {selectedMachine?.brand}
+            </p>
+            <p className="text-muted-foreground">
+              {selectedMachine?.description}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>;
 };
 export default MachinesPage;

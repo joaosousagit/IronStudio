@@ -1,9 +1,10 @@
-import { Dumbbell, ArrowRight } from "lucide-react";
+import { Dumbbell, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 interface Machine {
   id: string;
   name: string;
@@ -19,6 +20,7 @@ export const Machines = () => {
   const navigate = useNavigate();
   const [machines, setMachines] = useState<Machine[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null);
   useEffect(() => {
     fetchMachines();
   }, []);
@@ -85,7 +87,10 @@ export const Machines = () => {
             </div> : machines.map(item => {
           const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
           return <div key={item.id} className="bg-white border border-[hsl(var(--border-light))] hover-3d group overflow-hidden rounded-2xl shadow-lg">
-                  <div className="relative h-64 overflow-hidden">
+                  <div 
+                    className="relative h-64 overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedMachine(item)}
+                  >
                     <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
                     
@@ -115,5 +120,30 @@ export const Machines = () => {
           </Button>
         </div>
       </div>
+
+      <Dialog open={!!selectedMachine} onOpenChange={() => setSelectedMachine(null)}>
+        <DialogContent className="max-w-4xl">
+          <DialogHeader>
+            <DialogTitle className="text-2xl font-black uppercase">
+              {selectedMachine?.name}
+            </DialogTitle>
+          </DialogHeader>
+          <div className="relative">
+            <img 
+              src={selectedMachine?.image_url} 
+              alt={selectedMachine?.name} 
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
+          <div className="space-y-2">
+            <p className="text-sm text-primary font-semibold uppercase tracking-wider">
+              {selectedMachine?.brand}
+            </p>
+            <p className="text-muted-foreground">
+              {selectedMachine?.description}
+            </p>
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>;
 };
