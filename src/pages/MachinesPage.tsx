@@ -179,7 +179,7 @@ const MachinesPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {machines.map(item => {
             const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
             return <div key={item.id} className="bg-card border border-border hover-3d group overflow-hidden rounded-2xl">
