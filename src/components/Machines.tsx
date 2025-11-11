@@ -24,7 +24,8 @@ export const Machines = () => {
   }, []);
   const fetchMachines = async () => {
     try {
-      const {
+      // First try to get featured machines
+      let {
         data,
         error
       } = await supabase
@@ -35,6 +36,21 @@ export const Machines = () => {
           ascending: true
         })
         .limit(3);
+      
+      // If no featured machines, get the first 3 machines
+      if (!error && (!data || data.length === 0)) {
+        const fallbackQuery = await supabase
+          .from("machines")
+          .select("*")
+          .order("display_order", {
+            ascending: true
+          })
+          .limit(3);
+        
+        data = fallbackQuery.data;
+        error = fallbackQuery.error;
+      }
+      
       if (error) throw error;
       setMachines(data || []);
     } catch (error) {
