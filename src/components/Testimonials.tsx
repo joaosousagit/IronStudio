@@ -1,6 +1,5 @@
-import { Star, Quote } from "lucide-react";
+import { Star } from "lucide-react";
 import gymWide from "@/assets/gym-wide.jpg";
-
 interface Testimonial {
   name: string;
   age: number;
@@ -9,40 +8,32 @@ interface Testimonial {
   review: string;
   achievement: string;
 }
-
 export const Testimonials = () => {
-  const testimonials: Testimonial[] = [
-    {
-      name: "Miguel Santos",
-      age: 28,
-      memberSince: "2023",
-      rating: 5,
-      review: "O melhor ginásio onde já treinei. Equipamento top, ambiente focado e zero distrações. Consegui ganhar 8kg de massa muscular em 6 meses.",
-      achievement: "+8kg massa muscular"
-    },
-    {
-      name: "Pedro Almeida",
-      age: 35,
-      memberSince: "2023",
-      rating: 5,
-      review: "Finalmente um ginásio privado sem confusões. Treino sempre sozinho às 6h da manhã. O acesso 24/7 mudou a minha rotina completamente.",
-      achievement: "Treino consistente 5x/semana"
-    },
-    {
-      name: "João Ferreira",
-      age: 42,
-      memberSince: "2024",
-      rating: 5,
-      review: "Ambiente hardcore a sério. Pessoal dedicado, equipamento profissional e zero palhaçada. Recomendo a qualquer um que leve o treino a sério.",
-      achievement: "Melhor forma física aos 42"
-    }
-  ];
-
-  return (
-    <section 
-      className="py-20 relative bg-cover bg-center"
-      style={{ backgroundImage: `url(${gymWide})` }}
-    >
+  const testimonials: Testimonial[] = [{
+    name: "Miguel Santos",
+    age: 28,
+    memberSince: "2023",
+    rating: 5,
+    review: "O melhor ginásio onde já treinei. Equipamento top, ambiente focado e zero distrações. Consegui ganhar 8kg de massa muscular em 6 meses.",
+    achievement: "+8kg massa muscular"
+  }, {
+    name: "Pedro Almeida",
+    age: 35,
+    memberSince: "2023",
+    rating: 5,
+    review: "Finalmente um ginásio privado sem confusões. Treino sempre sozinho às 6h da manhã. O acesso 24/7 mudou a minha rotina completamente.",
+    achievement: "Treino consistente 5x/semana"
+  }, {
+    name: "João Ferreira",
+    age: 42,
+    memberSince: "2024",
+    rating: 5,
+    review: "Ambiente hardcore a sério. Pessoal dedicado, equipamento profissional e zero palhaçada. Recomendo a qualquer um que leve o treino a sério.",
+    achievement: "Melhor forma física aos 42"
+  }];
+  return <section className="py-20 relative bg-cover bg-center" style={{
+    backgroundImage: `url(${gymWide})`
+  }}>
       {/* Dark overlay for text readability */}
       <div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
       
@@ -61,19 +52,13 @@ export const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => (
-            <div
-              key={index}
-              className="glass-strong rounded-lg p-8 hover-3d glow relative overflow-hidden"
-            >
+          {testimonials.map((testimonial, index) => <div key={index} className="glass-strong rounded-lg p-8 hover-3d glow relative overflow-hidden">
               {/* Quote Icon */}
-              <Quote className="absolute top-4 right-4 w-12 h-12 text-primary/20" />
+              
               
               {/* Rating */}
               <div className="flex gap-1 mb-4">
-                {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-primary text-primary" />
-                ))}
+                {[...Array(testimonial.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-primary text-primary" />)}
               </div>
 
               {/* Review */}
@@ -82,11 +67,7 @@ export const Testimonials = () => {
               </p>
 
               {/* Achievement Badge */}
-              <div className="glass px-4 py-2 rounded-full mb-4 inline-block">
-                <span className="text-sm font-semibold text-primary">
-                  {testimonial.achievement}
-                </span>
-              </div>
+              
 
               {/* Author */}
               <div className="border-t border-border pt-4">
@@ -95,11 +76,9 @@ export const Testimonials = () => {
                   {testimonial.age} anos • Membro desde {testimonial.memberSince}
                 </p>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
       </div>
       </div>
-    </section>
-  );
+    </section>;
 };
