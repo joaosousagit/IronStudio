@@ -10,7 +10,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { MachineDialog } from "@/components/MachineDialog";
 import { useToast } from "@/hooks/use-toast";
 import * as Icons from "lucide-react";
-
 interface Machine {
   id: string;
   name: string;
@@ -21,127 +20,103 @@ interface Machine {
   icon_name: string;
   display_order: number;
 }
-
 const MachinesPage = () => {
   const navigate = useNavigate();
-  const { user, isAdmin, loading: authLoading, signOut } = useAuth();
-  const { toast } = useToast();
+  const {
+    user,
+    isAdmin,
+    loading: authLoading,
+    signOut
+  } = useAuth();
+  const {
+    toast
+  } = useToast();
   const [machines, setMachines] = useState<Machine[]>([]);
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
-
   useEffect(() => {
-    // Redirecionar para login se não estiver autenticado
-    if (!authLoading && !user) {
-      navigate("/admin/login");
-    }
-  }, [user, authLoading, navigate]);
-
-  useEffect(() => {
-    if (user) {
-      fetchMachines();
-    }
-  }, [user]);
-
+    fetchMachines();
+  }, []);
   const fetchMachines = async () => {
     try {
-      const { data, error } = await supabase
-        .from("machines")
-        .select("*")
-        .order("display_order", { ascending: true });
-
+      const {
+        data,
+        error
+      } = await supabase.from("machines").select("*").order("display_order", {
+        ascending: true
+      });
       if (error) throw error;
       setMachines(data || []);
     } catch (error: any) {
       toast({
         title: "Erro ao carregar máquinas",
         description: error.message,
-        variant: "destructive",
+        variant: "destructive"
       });
     } finally {
       setLoading(false);
     }
   };
-
   const handleDelete = async (id: string) => {
     if (!confirm("Tem certeza que deseja excluir esta máquina?")) return;
-
     try {
-      const { error } = await supabase
-        .from("machines")
-        .delete()
-        .eq("id", id);
-
+      const {
+        error
+      } = await supabase.from("machines").delete().eq("id", id);
       if (error) throw error;
-
       toast({
         title: "Máquina excluída",
-        description: "A máquina foi excluída com sucesso.",
+        description: "A máquina foi excluída com sucesso."
       });
-
       fetchMachines();
     } catch (error: any) {
       toast({
         title: "Erro ao excluir",
         description: error.message,
-        variant: "destructive",
+        variant: "destructive"
       });
     }
   };
-
   const handleEdit = (machine: Machine) => {
     setEditingMachine(machine);
     setDialogOpen(true);
   };
-
   const handleAdd = () => {
     setEditingMachine(null);
     setDialogOpen(true);
   };
-
   const handleDialogClose = () => {
     setDialogOpen(false);
     setEditingMachine(null);
   };
-
   const handleSignOut = async () => {
     await signOut();
     toast({
       title: "Sessão encerrada",
-      description: "Você saiu com sucesso.",
+      description: "Você saiu com sucesso."
     });
   };
-
   if (loading || authLoading) {
-    return (
-      <div className="min-h-screen flex items-center justify-center">
+    return <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
           <p className="text-muted-foreground">Carregando...</p>
         </div>
-      </div>
-    );
+      </div>;
   }
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navbar />
       
       <section className="pt-32 pb-20 bg-gradient-to-b from-background to-secondary/20">
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-8 flex-wrap gap-4">
-            <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
-              className="group"
-            >
+            <Button variant="ghost" onClick={() => navigate("/")} className="group">
               <ArrowLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
               Voltar ao Início
             </Button>
 
-            {isAdmin && (
-              <div className="flex gap-2">
+            {isAdmin && <div className="flex gap-2">
                 <Button onClick={handleAdd} className="gap-2">
                   <Plus className="w-4 h-4" />
                   Adicionar Máquina
@@ -150,17 +125,11 @@ const MachinesPage = () => {
                   <LogOut className="w-4 h-4" />
                   Sair
                 </Button>
-              </div>
-            )}
+              </div>}
           </div>
 
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 mb-4 glass px-6 py-3 rounded-full">
-              <Award className="w-5 h-5 text-primary" />
-              <span className="text-sm font-semibold uppercase tracking-wider text-primary">
-                Equipamento Premium
-              </span>
-            </div>
+            
             <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase">
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient">
                 As Melhores Máquinas do Mercado
@@ -172,44 +141,22 @@ const MachinesPage = () => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {machines.map((item) => {
-              const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
-              return (
-                <div
-                  key={item.id}
-                  className="glass-strong hover-3d glow group overflow-hidden rounded-2xl"
-                >
+            {machines.map(item => {
+            const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
+            return <div key={item.id} className="glass-strong hover-3d glow group overflow-hidden rounded-2xl">
                   <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
-                    <div className="absolute top-4 right-4 glass px-4 py-2 rounded-full">
-                      <IconComponent className="w-5 h-5 text-primary glow-pulse" />
-                    </div>
                     
-                    {isAdmin && (
-                      <div className="absolute top-4 left-4 flex gap-2">
-                        <Button
-                          size="sm"
-                          variant="secondary"
-                          onClick={() => handleEdit(item)}
-                          className="glass"
-                        >
+                    
+                    {isAdmin && <div className="absolute top-4 left-4 flex gap-2">
+                        <Button size="sm" variant="secondary" onClick={() => handleEdit(item)} className="glass">
                           <Pencil className="w-4 h-4" />
                         </Button>
-                        <Button
-                          size="sm"
-                          variant="destructive"
-                          onClick={() => handleDelete(item.id)}
-                          className="glass"
-                        >
+                        <Button size="sm" variant="destructive" onClick={() => handleDelete(item.id)} className="glass">
                           <Trash2 className="w-4 h-4" />
                         </Button>
-                      </div>
-                    )}
+                      </div>}
                   </div>
 
                   <div className="p-6">
@@ -225,9 +172,8 @@ const MachinesPage = () => {
                       {item.description}
                     </p>
                   </div>
-                </div>
-              );
-            })}
+                </div>;
+          })}
           </div>
 
           <div className="text-center mt-12">
@@ -240,14 +186,7 @@ const MachinesPage = () => {
 
       <Footer />
       
-      <MachineDialog
-        open={dialogOpen}
-        onOpenChange={handleDialogClose}
-        machine={editingMachine}
-        onSuccess={fetchMachines}
-      />
-    </div>
-  );
+      <MachineDialog open={dialogOpen} onOpenChange={handleDialogClose} machine={editingMachine} onSuccess={fetchMachines} />
+    </div>;
 };
-
 export default MachinesPage;
