@@ -7,6 +7,8 @@ export const Pricing = () => {
   const plan1Reveal = useScrollReveal({ threshold: 0.2 });
   const plan2Reveal = useScrollReveal({ threshold: 0.2 });
   
+  const plan3Reveal = useScrollReveal({ threshold: 0.2 });
+  
   const features = [
     "Acesso 24/7",
     "Equipamento completo",
@@ -31,7 +33,7 @@ export const Pricing = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {/* Plano Mensal */}
           <div 
             ref={plan1Reveal.ref}
@@ -73,10 +75,54 @@ export const Pricing = () => {
             </Button>
           </div>
 
-          {/* Plano Experimental */}
+          {/* Plano Anual */}
           <div 
             ref={plan2Reveal.ref}
-            className={`bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:shadow-2xl transition-all duration-300 scroll-slide-right ${plan2Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-4 border-primary p-10 hover:shadow-2xl transition-all duration-300 relative scroll-slide-up ${plan2Reveal.isVisible ? 'revealed' : ''}`}
+          >
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-1 text-sm font-bold uppercase">
+              Melhor Valor
+            </div>
+            <div className="text-center mb-8">
+              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Anual</h3>
+              <div className="mb-4">
+                <span className="text-6xl font-black text-primary">
+                  500€
+                </span>
+                <span className="text-[hsl(var(--muted-foreground-light))]">/ano</span>
+              </div>
+              <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
+                Poupa 100€ por ano
+              </p>
+            </div>
+
+            <ul className="space-y-4 mb-8">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-primary flex-shrink-0" />
+                  <span className="text-[hsl(var(--foreground-light))]">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Button
+              variant="default"
+              size="lg"
+              className="w-full uppercase font-bold tracking-wide"
+              onClick={() =>
+                document
+                  .getElementById("contact")
+                  ?.scrollIntoView({ behavior: "smooth" })
+              }
+            >
+              Juntar-me Agora
+            </Button>
+          </div>
+
+          {/* Plano Experimental */}
+          <div 
+            ref={plan3Reveal.ref}
+            className={`bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:shadow-2xl transition-all duration-300 scroll-slide-right ${plan3Reveal.isVisible ? 'revealed' : ''}`}
           >
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Experimenta</h3>
