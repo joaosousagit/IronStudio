@@ -52,7 +52,7 @@ export const Testimonials = () => {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {testimonials.map((testimonial, index) => <div key={index} className="glass-strong rounded-lg p-8 hover-3d glow relative overflow-hidden">
+          {testimonials.map((testimonial, index) => <div key={index} className="glass-strong rounded-lg p-8 hover-3d glow relative overflow-hidden flex flex-col">
               {/* Quote Icon */}
               
               
@@ -62,7 +62,7 @@ export const Testimonials = () => {
               </div>
 
               {/* Review */}
-              <p className="text-foreground mb-6 relative z-10 leading-relaxed">
+              <p className="text-foreground mb-6 relative z-10 leading-relaxed flex-grow">
                 "{testimonial.review}"
               </p>
 
@@ -70,7 +70,7 @@ export const Testimonials = () => {
               
 
               {/* Author */}
-              <div className="border-t border-border pt-4">
+              <div className="border-t border-border pt-4 mt-auto">
                 <p className="font-bold text-foreground">{testimonial.name}</p>
                 <p className="text-sm text-muted-foreground">
                   {testimonial.age} anos • Membro desde {testimonial.memberSince}
