@@ -171,10 +171,8 @@ const MachinesPage = () => {
 
           <div className="text-center mb-16">
             
-            <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient">
-                As Melhores Máquinas do Mercado
-              </span>
+            <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase text-foreground">
+              As Melhores Máquinas do Mercado
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Marcas líderes mundiais em equipamento de fitness profissional
@@ -223,7 +221,7 @@ const MachinesPage = () => {
 
                   <div className="p-6">
                     <div className="mb-3">
-                      <span className="text-sm text-primary font-semibold uppercase tracking-wider">
+                      <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">
                         {item.brand}
                       </span>
                     </div>
