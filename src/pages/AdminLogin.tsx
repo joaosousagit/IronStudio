@@ -12,7 +12,6 @@ export default function AdminLogin() {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const [session, setSession] = useState<Session | null>(null);
-  const [isSignUp, setIsSignUp] = useState(true);
   const navigate = useNavigate();
   const { toast } = useToast();
 
@@ -40,51 +39,22 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
 
-    if (isSignUp) {
-      const { data, error } = await supabase.auth.signUp({
-        email,
-        password,
-        options: {
-          emailRedirectTo: `${window.location.origin}/`,
-        },
-      });
+    const { error } = await supabase.auth.signInWithPassword({
+      email,
+      password,
+    });
 
-      if (error) {
-        toast({
-          title: "Erro ao criar conta",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else if (data.user) {
-        toast({
-          title: "Conta criada com sucesso!",
-          description: "O primeiro usuário é automaticamente admin. Faça login para acessar.",
-          duration: 5000,
-        });
-        
-        // Mudar automaticamente para o modo login
-        setTimeout(() => {
-          setIsSignUp(false);
-        }, 2000);
-      }
+    if (error) {
+      toast({
+        title: "Erro ao fazer login",
+        description: error.message,
+        variant: "destructive",
+      });
     } else {
-      const { error } = await supabase.auth.signInWithPassword({
-        email,
-        password,
+      toast({
+        title: "Login efetuado",
+        description: "Bem-vindo de volta!",
       });
-
-      if (error) {
-        toast({
-          title: "Erro ao fazer login",
-          description: error.message,
-          variant: "destructive",
-        });
-      } else {
-        toast({
-          title: "Login efetuado",
-          description: "Bem-vindo de volta!",
-        });
-      }
     }
 
     setLoading(false);
@@ -99,12 +69,10 @@ export default function AdminLogin() {
       <div className="w-full max-w-md space-y-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-foreground">
-            {isSignUp ? "Criar Conta Admin" : "Admin Login"}
+            Admin Login
           </h1>
           <p className="text-muted-foreground mt-2">
-            {isSignUp 
-              ? "Crie sua primeira conta de administrador" 
-              : "Acesso restrito a administradores"}
+            Acesso restrito a administradores
           </p>
         </div>
 
@@ -134,22 +102,8 @@ export default function AdminLogin() {
           </div>
 
           <Button type="submit" className="w-full" disabled={loading}>
-            {loading 
-              ? (isSignUp ? "Criando conta..." : "Entrando...") 
-              : (isSignUp ? "Criar Conta" : "Entrar")}
+            {loading ? "Entrando..." : "Entrar"}
           </Button>
-
-          <div className="text-center pt-4 border-t border-border">
-            <button
-              type="button"
-              onClick={() => setIsSignUp(!isSignUp)}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
-            >
-              {isSignUp 
-                ? "Já tem uma conta? Fazer login" 
-                : "Não tem conta? Criar nova conta"}
-            </button>
-          </div>
         </form>
       </div>
     </div>
