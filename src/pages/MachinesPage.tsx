@@ -32,17 +32,8 @@ const MachinesPage = () => {
   const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
 
   useEffect(() => {
-    // Redirecionar para login se não estiver autenticado
-    if (!authLoading && !user) {
-      navigate("/admin/login");
-    }
-  }, [user, authLoading, navigate]);
-
-  useEffect(() => {
-    if (user) {
-      fetchMachines();
-    }
-  }, [user]);
+    fetchMachines();
+  }, []);
 
   const fetchMachines = async () => {
     try {
