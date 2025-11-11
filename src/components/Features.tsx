@@ -7,7 +7,7 @@ export const Features = () => {
   const quoteReveal = useScrollReveal();
   
   return (
-    <section className="py-24 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
+    <section id="features" className="py-24 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         {/* Title Section */}
         <div 
