@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
-
 interface Machine {
   id: string;
   name: string;
@@ -15,24 +14,21 @@ interface Machine {
   icon_name: string;
   display_order: number;
 }
-
 export const Machines = () => {
   const navigate = useNavigate();
   const [machines, setMachines] = useState<Machine[]>([]);
   const [loading, setLoading] = useState(true);
-  
   useEffect(() => {
     fetchMachines();
   }, []);
-
   const fetchMachines = async () => {
     try {
-      const { data, error } = await supabase
-        .from("machines")
-        .select("*")
-        .order("display_order", { ascending: true })
-        .limit(3);
-
+      const {
+        data,
+        error
+      } = await supabase.from("machines").select("*").order("display_order", {
+        ascending: true
+      }).limit(3);
       if (error) throw error;
       setMachines(data || []);
     } catch (error) {
@@ -41,14 +37,11 @@ export const Machines = () => {
       setLoading(false);
     }
   };
-  
   const handleNavigate = () => {
     navigate("/maquinas");
     window.scrollTo(0, 0);
   };
-
-  return (
-    <section id="machines" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
+  return <section id="machines" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
@@ -62,33 +55,18 @@ export const Machines = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {loading ? (
-            <div className="col-span-full text-center py-12">
+          {loading ? <div className="col-span-full text-center py-12">
               <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
               <p className="text-[hsl(var(--muted-foreground-light))]">Carregando máquinas...</p>
-            </div>
-          ) : machines.length === 0 ? (
-            <div className="col-span-full text-center py-12">
+            </div> : machines.length === 0 ? <div className="col-span-full text-center py-12">
               <p className="text-[hsl(var(--muted-foreground-light))]">Nenhuma máquina disponível no momento.</p>
-            </div>
-          ) : (
-            machines.map((item) => {
-              const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
-              return (
-                <div
-                  key={item.id}
-                  className="bg-white border border-[hsl(var(--border-light))] hover-3d group overflow-hidden rounded-2xl shadow-lg"
-                >
+            </div> : machines.map(item => {
+          const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
+          return <div key={item.id} className="bg-white border border-[hsl(var(--border-light))] hover-3d group overflow-hidden rounded-2xl shadow-lg">
                   <div className="relative h-64 overflow-hidden">
-                    <img
-                      src={item.image_url}
-                      alt={item.name}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                    />
+                    <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
-                    <div className="absolute top-4 right-4 glass px-4 py-2 rounded-full">
-                      <IconComponent className="w-5 h-5 text-primary glow-pulse" />
-                    </div>
+                    
                   </div>
 
                   <div className="p-6">
@@ -104,23 +82,16 @@ export const Machines = () => {
                       {item.description}
                     </p>
                   </div>
-                </div>
-              );
-            })
-          )}
+                </div>;
+        })}
         </div>
 
         <div className="text-center mt-12">
-          <Button
-            size="lg"
-            onClick={handleNavigate}
-            className="group hover-3d"
-          >
+          <Button size="lg" onClick={handleNavigate} className="group hover-3d">
             Ver Todas as Máquinas
             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
