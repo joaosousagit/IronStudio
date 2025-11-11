@@ -13,6 +13,7 @@ interface Machine {
   muscle_groups: string[];
   icon_name: string;
   display_order: number;
+  is_featured: boolean;
 }
 export const Machines = () => {
   const navigate = useNavigate();
@@ -26,9 +27,14 @@ export const Machines = () => {
       const {
         data,
         error
-      } = await supabase.from("machines").select("*").order("display_order", {
-        ascending: true
-      }).limit(3);
+      } = await supabase
+        .from("machines")
+        .select("*")
+        .eq("is_featured", true)
+        .order("display_order", {
+          ascending: true
+        })
+        .limit(3);
       if (error) throw error;
       setMachines(data || []);
     } catch (error) {

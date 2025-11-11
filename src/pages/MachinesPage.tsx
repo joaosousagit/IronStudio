@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut } from "lucide-react";
+import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -19,6 +19,7 @@ interface Machine {
   muscle_groups: string[];
   icon_name: string;
   display_order: number;
+  is_featured: boolean;
 }
 const MachinesPage = () => {
   const navigate = useNavigate();
@@ -90,6 +91,44 @@ const MachinesPage = () => {
     setDialogOpen(false);
     setEditingMachine(null);
   };
+
+  const handleToggleFeatured = async (machine: Machine) => {
+    // Check if we're trying to feature a machine and already have 3 featured
+    const featuredCount = machines.filter(m => m.is_featured).length;
+    
+    if (!machine.is_featured && featuredCount >= 3) {
+      toast({
+        title: "Limite atingido",
+        description: "Você só pode ter 3 máquinas em destaque. Remova uma antes de adicionar outra.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from("machines")
+        .update({ is_featured: !machine.is_featured })
+        .eq("id", machine.id);
+
+      if (error) throw error;
+
+      toast({
+        title: machine.is_featured ? "Removido dos destaques" : "Adicionado aos destaques",
+        description: machine.is_featured 
+          ? "Esta máquina não aparecerá mais na página principal." 
+          : "Esta máquina agora aparece na página principal."
+      });
+      
+      fetchMachines();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao atualizar",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
   const handleSignOut = async () => {
     await signOut();
     toast({
@@ -148,8 +187,26 @@ const MachinesPage = () => {
                     <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
                     
+                    {/* Featured badge */}
+                    {item.is_featured && (
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-primary/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-current" />
+                          <span className="text-xs font-bold">DESTAQUE</span>
+                        </div>
+                      </div>
+                    )}
                     
                     {isAdmin && <div className="absolute top-4 left-4 flex gap-2">
+                        <Button 
+                          size="sm" 
+                          variant={item.is_featured ? "default" : "secondary"}
+                          onClick={() => handleToggleFeatured(item)} 
+                          className="glass"
+                          title={item.is_featured ? "Remover dos destaques" : "Adicionar aos destaques"}
+                        >
+                          <Star className={`w-4 h-4 ${item.is_featured ? 'fill-current' : ''}`} />
+                        </Button>
                         <Button size="sm" variant="secondary" onClick={() => handleEdit(item)} className="glass">
                           <Pencil className="w-4 h-4" />
                         </Button>
