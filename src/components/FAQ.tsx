@@ -4,6 +4,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import gymInterior from "@/assets/gym-interior.jpg";
 
 export const FAQ = () => {
   const faqs = [
@@ -45,7 +46,14 @@ export const FAQ = () => {
   ];
 
   return (
-    <section id="faq" className="py-20 bg-background">
+    <section id="faq" className="py-20 relative bg-cover bg-center" style={{
+      backgroundImage: `url(${gymInterior})`
+    }}>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-black/75 backdrop-blur-sm"></div>
+      
+      {/* Content */}
+      <div className="relative z-10">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
@@ -90,6 +98,7 @@ export const FAQ = () => {
             Contacta-nos →
           </a>
         </div>
+      </div>
       </div>
     </section>
   );

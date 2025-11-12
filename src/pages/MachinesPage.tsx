@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut } from "lucide-react";
+import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
@@ -10,6 +10,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { MachineDialog } from "@/components/MachineDialog";
 import { useToast } from "@/hooks/use-toast";
 import * as Icons from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 interface Machine {
   id: string;
   name: string;
@@ -19,6 +20,7 @@ interface Machine {
   muscle_groups: string[];
   icon_name: string;
   display_order: number;
+  is_featured: boolean;
 }
 const MachinesPage = () => {
   const navigate = useNavigate();
@@ -35,6 +37,7 @@ const MachinesPage = () => {
   const [loading, setLoading] = useState(true);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editingMachine, setEditingMachine] = useState<Machine | null>(null);
+  const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null);
   useEffect(() => {
     fetchMachines();
   }, []);
@@ -90,6 +93,44 @@ const MachinesPage = () => {
     setDialogOpen(false);
     setEditingMachine(null);
   };
+
+  const handleToggleFeatured = async (machine: Machine) => {
+    // Check if we're trying to feature a machine and already have 3 featured
+    const featuredCount = machines.filter(m => m.is_featured).length;
+    
+    if (!machine.is_featured && featuredCount >= 3) {
+      toast({
+        title: "Limite atingido",
+        description: "Você só pode ter 3 máquinas em destaque. Remova uma antes de adicionar outra.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    try {
+      const { error } = await supabase
+        .from("machines")
+        .update({ is_featured: !machine.is_featured })
+        .eq("id", machine.id);
+
+      if (error) throw error;
+
+      toast({
+        title: machine.is_featured ? "Removido dos destaques" : "Adicionado aos destaques",
+        description: machine.is_featured 
+          ? "Esta máquina não aparecerá mais na página principal." 
+          : "Esta máquina agora aparece na página principal."
+      });
+      
+      fetchMachines();
+    } catch (error: any) {
+      toast({
+        title: "Erro ao atualizar",
+        description: error.message,
+        variant: "destructive"
+      });
+    }
+  };
   const handleSignOut = async () => {
     await signOut();
     toast({
@@ -130,26 +171,45 @@ const MachinesPage = () => {
 
           <div className="text-center mb-16">
             
-            <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase">
-              <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent animate-gradient">
-                As Melhores Máquinas do Mercado
-              </span>
+            <h1 className="text-4xl md:text-6xl font-black mb-4 uppercase text-foreground">
+              As Melhores Máquinas do Mercado
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
               Marcas líderes mundiais em equipamento de fitness profissional
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
             {machines.map(item => {
             const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
-            return <div key={item.id} className="glass-strong hover-3d glow group overflow-hidden rounded-2xl">
-                  <div className="relative h-64 overflow-hidden">
+            return <div key={item.id} className="bg-card border border-border hover-3d group overflow-hidden rounded-2xl">
+                  <div 
+                    className="relative h-64 overflow-hidden cursor-pointer"
+                    onClick={() => !isAdmin && setSelectedMachine(item)}
+                  >
                     <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
                     
+                    {/* Featured badge */}
+                    {item.is_featured && (
+                      <div className="absolute top-4 right-4">
+                        <div className="bg-primary/90 backdrop-blur-sm px-3 py-1 rounded-full flex items-center gap-1">
+                          <Star className="w-4 h-4 fill-current" />
+                          <span className="text-xs font-bold">DESTAQUE</span>
+                        </div>
+                      </div>
+                    )}
                     
                     {isAdmin && <div className="absolute top-4 left-4 flex gap-2">
+                        <Button 
+                          size="sm" 
+                          variant={item.is_featured ? "default" : "secondary"}
+                          onClick={() => handleToggleFeatured(item)} 
+                          className="glass"
+                          title={item.is_featured ? "Remover dos destaques" : "Adicionar aos destaques"}
+                        >
+                          <Star className={`w-4 h-4 ${item.is_featured ? 'fill-current' : ''}`} />
+                        </Button>
                         <Button size="sm" variant="secondary" onClick={() => handleEdit(item)} className="glass">
                           <Pencil className="w-4 h-4" />
                         </Button>
@@ -161,7 +221,7 @@ const MachinesPage = () => {
 
                   <div className="p-6">
                     <div className="mb-3">
-                      <span className="text-sm text-primary font-semibold uppercase tracking-wider">
+                      <span className="text-sm text-muted-foreground font-semibold uppercase tracking-wider">
                         {item.brand}
                       </span>
                     </div>
@@ -187,6 +247,16 @@ const MachinesPage = () => {
       <Footer />
       
       <MachineDialog open={dialogOpen} onOpenChange={handleDialogClose} machine={editingMachine} onSuccess={fetchMachines} />
+      
+      <Dialog open={!!selectedMachine} onOpenChange={() => setSelectedMachine(null)}>
+        <DialogContent className="max-w-5xl p-0 border-0">
+          <img 
+            src={selectedMachine?.image_url} 
+            alt={selectedMachine?.name} 
+            className="w-full h-auto rounded-lg"
+          />
+        </DialogContent>
+      </Dialog>
     </div>;
 };
 export default MachinesPage;

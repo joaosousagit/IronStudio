@@ -47,6 +47,7 @@ export type Database = {
           icon_name: string
           id: string
           image_url: string
+          is_featured: boolean
           muscle_groups: string[]
           name: string
           updated_at: string
@@ -59,6 +60,7 @@ export type Database = {
           icon_name: string
           id?: string
           image_url: string
+          is_featured?: boolean
           muscle_groups: string[]
           name: string
           updated_at?: string
@@ -71,6 +73,7 @@ export type Database = {
           icon_name?: string
           id?: string
           image_url?: string
+          is_featured?: boolean
           muscle_groups?: string[]
           name?: string
           updated_at?: string

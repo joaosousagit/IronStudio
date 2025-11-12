@@ -1,9 +1,10 @@
-import { Dumbbell, ArrowRight } from "lucide-react";
+import { Dumbbell, ArrowRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import * as Icons from "lucide-react";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 interface Machine {
   id: string;
   name: string;
@@ -13,22 +14,45 @@ interface Machine {
   muscle_groups: string[];
   icon_name: string;
   display_order: number;
+  is_featured: boolean;
 }
 export const Machines = () => {
   const navigate = useNavigate();
   const [machines, setMachines] = useState<Machine[]>([]);
   const [loading, setLoading] = useState(true);
+  const [selectedMachine, setSelectedMachine] = useState<Machine | null>(null);
   useEffect(() => {
     fetchMachines();
   }, []);
   const fetchMachines = async () => {
     try {
-      const {
+      // First try to get featured machines
+      let {
         data,
         error
-      } = await supabase.from("machines").select("*").order("display_order", {
-        ascending: true
-      }).limit(3);
+      } = await supabase
+        .from("machines")
+        .select("*")
+        .eq("is_featured", true)
+        .order("display_order", {
+          ascending: true
+        })
+        .limit(3);
+      
+      // If no featured machines, get the first 3 machines
+      if (!error && (!data || data.length === 0)) {
+        const fallbackQuery = await supabase
+          .from("machines")
+          .select("*")
+          .order("display_order", {
+            ascending: true
+          })
+          .limit(3);
+        
+        data = fallbackQuery.data;
+        error = fallbackQuery.error;
+      }
+      
       if (error) throw error;
       setMachines(data || []);
     } catch (error) {
@@ -54,7 +78,7 @@ export const Machines = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {loading ? <div className="col-span-full text-center py-12">
               <div className="animate-spin w-8 h-8 border-4 border-primary border-t-transparent rounded-full mx-auto mb-4"></div>
               <p className="text-[hsl(var(--muted-foreground-light))]">Carregando máquinas...</p>
@@ -63,7 +87,10 @@ export const Machines = () => {
             </div> : machines.map(item => {
           const IconComponent = (Icons as any)[item.icon_name] || Dumbbell;
           return <div key={item.id} className="bg-white border border-[hsl(var(--border-light))] hover-3d group overflow-hidden rounded-2xl shadow-lg">
-                  <div className="relative h-64 overflow-hidden">
+                  <div 
+                    className="relative h-64 overflow-hidden cursor-pointer"
+                    onClick={() => setSelectedMachine(item)}
+                  >
                     <img src={item.image_url} alt={item.name} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
                     <div className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent opacity-80"></div>
                     
@@ -93,5 +120,15 @@ export const Machines = () => {
           </Button>
         </div>
       </div>
+
+      <Dialog open={!!selectedMachine} onOpenChange={() => setSelectedMachine(null)}>
+        <DialogContent className="max-w-5xl p-0 border-0">
+          <img 
+            src={selectedMachine?.image_url} 
+            alt={selectedMachine?.name} 
+            className="w-full h-auto rounded-lg"
+          />
+        </DialogContent>
+      </Dialog>
     </section>;
 };
