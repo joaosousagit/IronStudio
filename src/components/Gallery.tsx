@@ -4,9 +4,9 @@ import { useScrollReveal } from "@/hooks/useScrollReveal";
 import gymInterior from "@/assets/gym-interior.jpg";
 import gymEquipment from "@/assets/gym-equipment.jpg";
 import gymWide from "@/assets/gym-wide.jpg";
-import equipment from "@/assets/equipment.jpg";
+import lifefitness from "@/assets/lifefitness.jpg";
 import gymWall from "@/assets/gym-wall.jpg";
-import service247 from "@/assets/24-7.jpg";
+import gym from "@/assets/gym.jpg";
 interface GalleryImage {
   src: string;
   alt: string;
@@ -28,7 +28,7 @@ export const Gallery = () => {
     alt: "Vista geral do ginásio",
     category: "Espaço"
   }, {
-    src: equipment,
+    src: lifefitness,
     alt: "Equipamento de treino",
     category: "Equipamento"
   }, {
@@ -36,7 +36,7 @@ export const Gallery = () => {
     alt: "Parede do ginásio",
     category: "Ambiente"
   }, {
-    src: service247,
+    src: gym,
     alt: "Serviço 24/7",
     category: "Ambiente"
   }];
