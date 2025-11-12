@@ -53,7 +53,7 @@ export const Navbar = () => {
     { id: "features", label: "Vantagens" },
     { id: "pricing", label: "Preços" },
     { id: "faq", label: "FAQ" },
-    { id: "contact", label: "Contacto" },
+    { id: "contact", label: "Contactos" },
   ];
 
   return (
