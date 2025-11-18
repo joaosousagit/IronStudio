@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, MapPin } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { InstagramIcon, WhatsAppIcon } from "./SocialIcons";
+import { Map } from "./Map";
 
 export const Contact = () => {
   const titleReveal = useScrollReveal();
@@ -77,6 +78,11 @@ export const Contact = () => {
                 Enviar Mensagem
               </Button>
             </div>
+          </div>
+
+          {/* Map Section */}
+          <div className="mb-12">
+            <Map />
           </div>
 
           {/* Additional Info */}

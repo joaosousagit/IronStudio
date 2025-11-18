@@ -51,20 +51,20 @@ export const Hero = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16 animate-fade-in" style={{ animationDelay: '0.2s' }}>
             <Button 
               size="lg"
-              className="bg-[#D1D5DB] hover:bg-[#B8BCC3] text-black font-black uppercase text-sm tracking-wider px-8 py-7 rounded-lg min-w-[280px] shadow-lg"
+              className="bg-primary hover:bg-primary/90 text-white font-black uppercase text-sm tracking-wider px-10 py-8 rounded-lg min-w-[300px] shadow-2xl shadow-primary/50 transition-all hover:scale-105"
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              JUNTAR À COMUNIDADE
-              <ArrowRight className="ml-3 h-5 w-5" />
+              COMEÇAR AGORA
+              <ArrowRight className="ml-3 h-6 w-6" />
             </Button>
             
             <Button 
               variant="outline"
               size="lg"
-              className="border-2 border-white/80 bg-black/40 hover:bg-white/10 text-white font-bold uppercase text-sm tracking-wider px-8 py-7 rounded-lg min-w-[200px]"
-              onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+              className="border-2 border-white/80 bg-black/40 hover:bg-white/10 text-white font-bold uppercase text-sm tracking-wider px-8 py-7 rounded-lg min-w-[200px] transition-all hover:scale-105"
+              onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
             >
-              Saber Mais
+              Ver Preços
             </Button>
           </div>
 
