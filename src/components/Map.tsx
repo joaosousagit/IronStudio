@@ -20,16 +20,26 @@ export const Map = () => {
       map.current = new mapboxgl.Map({
         container: mapContainer.current,
         style: 'mapbox://styles/mapbox/streets-v12',
-        center: [-8.8074, 39.7436], // Leiria coordinates
-        zoom: 14,
+        center: [-8.8074, 39.7436], // Shopping Leiria coordinates
+        zoom: 15,
       });
 
-      // Add marker for Iron Studio
-      new mapboxgl.Marker({ color: '#DC2626' })
+      // Add marker for Shopping Leiria
+      new mapboxgl.Marker({ color: '#3B82F6' })
         .setLngLat([-8.8074, 39.7436])
         .setPopup(
           new mapboxgl.Popup().setHTML(
-            '<div class="p-2"><h3 class="font-bold">Iron Studio</h3><p class="text-sm">Ginásio em Leiria</p></div>'
+            '<div class="p-2"><h3 class="font-bold">Shopping Leiria</h3><p class="text-sm">Centro Comercial</p></div>'
+          )
+        )
+        .addTo(map.current);
+
+      // Add marker for Iron Studio (nearby)
+      new mapboxgl.Marker({ color: '#DC2626' })
+        .setLngLat([-8.8065, 39.7430])
+        .setPopup(
+          new mapboxgl.Popup().setHTML(
+            '<div class="p-2"><h3 class="font-bold">Iron Studio</h3><p class="text-sm">Ginásio - Perto do Shopping</p></div>'
           )
         )
         .addTo(map.current);
