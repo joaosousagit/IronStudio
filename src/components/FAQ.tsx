@@ -11,7 +11,7 @@ export const FAQ = () => {
     {
       question: "Como funciona o acesso ao ginásio?",
       answer:
-        "O acesso é feito através de um código pessoal que inseris na porta. Assim podes treinar quando quiseres, 24 horas por dia, 7 dias por semana.",
+        "O acesso é feito através de um código pessoal que inseris na porta. Temos o horário mais alargado de Leiria, permitindo-te treinar quando for mais conveniente para ti.",
     },
     {
       question: "Que instalações estão disponíveis?",
