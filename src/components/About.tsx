@@ -32,9 +32,9 @@ export const About = () => {
             <div className="aspect-square overflow-hidden">
               <img src={equipmentImage} alt="Iron Studio BB Club - Equipamento de Musculação" className="w-full h-full object-cover" />
             </div>
-            <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-8">
-              <p className="text-sm mb-2 uppercase">DESDE DE          </p>
-              <p className="text-5xl font-black">2023</p>
+            <div className="absolute bottom-0 right-0 bg-primary text-primary-foreground p-4">
+              <p className="text-xs mb-1 uppercase">DESDE DE</p>
+              <p className="text-3xl font-black">2023</p>
             </div>
           </div>
 
