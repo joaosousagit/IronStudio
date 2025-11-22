@@ -20,8 +20,8 @@ export const About = () => {
     },
     {
       icon: Clock,
-      title: "Acesso 24/7",
-      description: "Treina quando quiseres. Aberto 24 horas por dia, todos os dias. Sem desculpas."
+      title: "Horário Mais Alargado",
+      description: "O ginásio com o horário mais alargado de Leiria. Treina quando te é mais conveniente."
     },
     {
       icon: Trophy,
