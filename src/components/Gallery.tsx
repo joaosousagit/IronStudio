@@ -64,7 +64,6 @@ export const Gallery = () => {
                 <img src={image.src} alt={image.alt} className="w-full h-full object-cover" style={{
                   filter: 'grayscale(100%) contrast(1.1)'
                 }} />
-                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-transparent"></div>
                 
                     <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
                       <ZoomIn className="w-6 h-6 text-foreground" />
@@ -85,12 +84,6 @@ export const Gallery = () => {
 
           <div className="max-w-6xl w-full animate-scale-in" onClick={e => e.stopPropagation()}>
             <img src={selectedImage.src} alt={selectedImage.alt} className="w-full h-auto max-h-[85vh] object-contain rounded-lg shadow-[var(--shadow-elevated)]" />
-            <div className="text-center mt-6">
-              <span className="glass-strong px-6 py-3 rounded-full text-lg font-semibold text-primary">
-                {selectedImage.category}
-              </span>
-              <p className="text-muted-foreground mt-4">{selectedImage.alt}</p>
-            </div>
           </div>
         </div>}
     </>;
