@@ -20,7 +20,7 @@ export const GymRules = () => {
   }, {
     icon: Clock,
     title: "Sem Limites de Tempo",
-    description: "Treina o tempo que precisares. O ginásio é teu 24/7."
+    description: "Treina o tempo que precisares. O centro de treinos é teu 24/7."
   }, {
     icon: Shield,
     title: "Segurança Primeiro",
@@ -35,7 +35,7 @@ export const GymRules = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl md:text-5xl font-black mb-4 uppercase">
             <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              Regras do Ginásio
+              Regras do Centro de Treinos
             </span>
           </h2>
           <p className="text-xl text-[hsl(var(--muted-foreground-light))] max-w-2xl mx-auto">

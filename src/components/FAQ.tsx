@@ -9,7 +9,7 @@ import gymInterior from "@/assets/gym-interior.jpg";
 export const FAQ = () => {
   const faqs = [
     {
-      question: "Como funciona o acesso ao ginásio?",
+      question: "Como funciona o acesso ao centro de treinos?",
       answer:
         "O acesso é feito através de um código pessoal que inseris na porta. Temos o horário mais alargado de Leiria, permitindo-te treinar quando for mais conveniente para ti.",
     },
@@ -26,7 +26,7 @@ export const FAQ = () => {
     {
       question: "Posso experimentar antes de me inscrever?",
       answer:
-        "Sim! Oferecemos um dia experimental por 15€. Assim podes conhecer as instalações e decidir se é o ginásio certo para ti.",
+        "Sim! Oferecemos um dia experimental por 15€. Assim podes conhecer as instalações e decidir se é o centro de treinos certo para ti.",
     },
     {
       question: "Como funciona o pagamento?",
@@ -36,10 +36,10 @@ export const FAQ = () => {
     {
       question: "Há estacionamento?",
       answer:
-        "Sim! Temos sempre estacionamento disponível e a localização é muito boa, facilitando o acesso ao ginásio.",
+        "Sim! Temos sempre estacionamento disponível e a localização é muito boa, facilitando o acesso ao centro de treinos.",
     },
     {
-      question: "Qual é a política do ginásio?",
+      question: "Qual é a política do centro de treinos?",
       answer:
         "Promovemos um ambiente focado no treino, sem distrações. Pedimos respeito pelo equipamento e pelos outros membros, e que tragas a tua toalha para usar nas instalações.",
     },

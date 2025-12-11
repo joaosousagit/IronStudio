@@ -21,11 +21,11 @@ export const Gallery = () => {
     category: "Espaço"
   }, {
     src: gymEquipment,
-    alt: "Equipamento do ginásio",
+    alt: "Equipamento do centro de treinos",
     category: "Equipamento"
   }, {
     src: gymWide,
-    alt: "Vista geral do ginásio",
+    alt: "Vista geral do centro de treinos",
     category: "Espaço"
   }, {
     src: lifefitness,
@@ -33,7 +33,7 @@ export const Gallery = () => {
     category: "Equipamento"
   }, {
     src: gymWall,
-    alt: "Parede do ginásio",
+    alt: "Parede do centro de treinos",
     category: "Ambiente"
   }, {
     src: gym,

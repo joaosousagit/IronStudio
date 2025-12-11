@@ -7,7 +7,7 @@ export const Map = () => {
       <div className="flex items-center gap-3 mb-4">
         <MapPin className="w-6 h-6 text-primary" />
         <h3 className="text-xl font-bold text-foreground">
-          Localização do Ginásio
+          Localização do Centro de Treinos
         </h3>
       </div>
       <p className="text-muted-foreground mb-4">

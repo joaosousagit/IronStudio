@@ -27,7 +27,7 @@ export const Contact = () => {
             className={`text-center mb-16 scroll-reveal ${titleReveal.isVisible ? 'revealed' : ''}`}
           >
             <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
-              Vem treinar num ginásio verdadeiramente hardcore
+              Vem treinar no centro de treinos ideal para ti
             </h1>
             <p className="text-xl text-[hsl(var(--muted-foreground-light))]">
               Contacta-nos para mais informações

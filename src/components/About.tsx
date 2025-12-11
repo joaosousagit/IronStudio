@@ -9,20 +9,20 @@ export const About = () => {
   });
   const features = [{
     icon: Dumbbell,
-    title: "Equipamento de Elite",
-    description: "Equipamento profissional de musculação, pensado para atletas sérios que procuram resultados reais."
+    title: "Equipamento Completo",
+    description: "Equipamento de qualidade para todos os tipos de treino, seja qual for o teu objetivo."
   }, {
     icon: Users,
-    title: "Comunidade Focada",
-    description: "Não somos um ginásio comercial. Somos uma comunidade privada de pessoas dedicadas ao ferro."
+    title: "Ambiente Acolhedor",
+    description: "Um espaço onde todos são bem-vindos, independentemente do nível de experiência."
   }, {
     icon: Clock,
     title: "Horário Mais Alargado",
-    description: "O ginásio com o horário mais alargado de Leiria. Treina quando te é mais conveniente."
+    description: "O centro de treinos com o horário mais alargado de Leiria. Treina quando te é mais conveniente."
   }, {
     icon: Trophy,
     title: "Resultados",
-    description: "Ambiente focado em progressão, ganhos reais e superação de limites. Sem distrações."
+    description: "Ambiente focado em progressão e bem-estar. Alcança os teus objetivos ao teu ritmo."
   }];
   return <section id="about" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
       <div className="container mx-auto px-4">
@@ -45,9 +45,9 @@ export const About = () => {
           </h2>
             
             <p className="text-lg text-[hsl(var(--muted-foreground-light))] mb-6 leading-relaxed">
-              O Iron Studio não é apenas um ginásio. É um espaço privado onde atletas verdadeiramente comprometidos 
-              com a musculação encontram o ambiente perfeito para evoluir. Sem multidões, sem distrações, 
-              apenas ferro pesado e uma comunidade que partilha os mesmos objetivos.
+              O Iron Studio é mais do que um centro de treinos. É um espaço onde pessoas de todos os níveis 
+              encontram o ambiente ideal para alcançar os seus objetivos. Sem multidões, sem distrações, 
+              apenas foco no teu bem-estar e evolução pessoal.
             </p>
 
             <div className="bg-white border-l-4 border-primary px-6 py-4 mb-10">
