@@ -19,7 +19,7 @@ const Index = () => {
       <Hero />
       <About />
       <Gallery />
-      <Machines />
+      {/* <Machines /> */} {/* TEMPORARIAMENTE OCULTO - reativar quando tiver todas as fotos */}
       <Features />
       <Pricing />
       <Testimonials />
