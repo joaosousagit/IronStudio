@@ -22,7 +22,7 @@ export const Features = () => {
           </p>
         </div>
 
-        <p className="text-center text-xl mb-12 text-[hsl(var(--muted-foreground-light))]">No ginásio, vais encontrar:</p>
+        <p className="text-center text-xl mb-12 text-[hsl(var(--muted-foreground-light))]">No centro de treinos, vais encontrar:</p>
 
         {/* Features Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-24">

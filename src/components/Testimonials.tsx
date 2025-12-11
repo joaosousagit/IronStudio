@@ -14,14 +14,14 @@ export const Testimonials = () => {
     age: 28,
     memberSince: "2023",
     rating: 5,
-    review: "O melhor ginásio onde já treinei. Equipamento top, ambiente focado e zero distrações. Consegui ganhar 8kg de massa muscular em 6 meses.",
-    achievement: "+8kg massa muscular"
+    review: "O melhor centro de treinos onde já treinei. Equipamento top, ambiente focado e zero distrações. Consegui alcançar os meus objetivos em poucos meses.",
+    achievement: "Objetivos alcançados"
   }, {
     name: "Pedro Almeida",
     age: 35,
     memberSince: "2023",
     rating: 5,
-    review: "Finalmente um ginásio privado sem confusões. Treino sempre sozinho às 6h da manhã. O acesso 24/7 mudou a minha rotina completamente.",
+    review: "Finalmente um centro de treinos sem confusões. Treino sempre sozinho às 6h da manhã. O acesso com horário alargado mudou a minha rotina completamente.",
     achievement: "Treino consistente 5x/semana"
   }, {
     name: "João Ferreira",

@@ -14,7 +14,7 @@ export const Footer = () => {
               </span>
             </h3>
             <p className="text-sm text-muted-foreground">
-              Ginásio Privado 24/7 - Onde as feras treinam
+              Centro de Treinos - O horário mais alargado de Leiria
             </p>
           </div>
 
