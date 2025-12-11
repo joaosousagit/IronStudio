@@ -93,7 +93,7 @@ export const Pricing = () => {
               <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Anual</h3>
               <div className="mb-4">
                 <span className="text-3xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
-                  500€
+                  480€
                 </span>
                 <span className="text-6xl font-black text-primary">
                   360€
