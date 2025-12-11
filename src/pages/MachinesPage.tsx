@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { BackToTop } from "@/components/BackToTop";
 import { Dumbbell, Award, Activity, Bike, TrendingUp, Plus, Pencil, Trash2, LogOut, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
@@ -245,6 +246,7 @@ const MachinesPage = () => {
       </section>
 
       <Footer />
+      <BackToTop />
       
       <MachineDialog open={dialogOpen} onOpenChange={handleDialogClose} machine={editingMachine} onSuccess={fetchMachines} />
       
