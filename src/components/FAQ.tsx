@@ -31,7 +31,7 @@ export const FAQ = () => {
     {
       question: "Como funciona o pagamento?",
       answer:
-        "O pagamento mensal de 50€ é feito por MBWay, de forma simples e segura.",
+        "O pagamento é feito por MBWay, de forma simples e segura.",
     },
     {
       question: "Há estacionamento?",
