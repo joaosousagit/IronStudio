@@ -31,6 +31,9 @@ export const Pricing = () => {
           <p className="text-xl text-[hsl(var(--muted-foreground-light))]">
             Planos simples e transparentes
           </p>
+          <div className="mt-4 inline-block bg-primary text-white px-6 py-2 font-bold uppercase">
+            🎄 Promoção de Dezembro 🎄
+          </div>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -42,8 +45,11 @@ export const Pricing = () => {
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Mensal</h3>
               <div className="mb-4">
-                <span className="text-6xl font-black text-primary">
+                <span className="text-3xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
                   50€
+                </span>
+                <span className="text-6xl font-black text-primary">
+                  35€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
               </div>
@@ -86,13 +92,16 @@ export const Pricing = () => {
             <div className="text-center mb-8">
               <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Anual</h3>
               <div className="mb-4">
-                <span className="text-6xl font-black text-primary">
+                <span className="text-3xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
                   500€
+                </span>
+                <span className="text-6xl font-black text-primary">
+                  360€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/ano</span>
               </div>
               <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
-                Poupa 100€ por ano
+                Poupa 140€ por ano
               </p>
             </div>
 
