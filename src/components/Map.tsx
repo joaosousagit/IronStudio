@@ -15,7 +15,7 @@ export const Map = () => {
       </p>
       <div className="relative w-full h-[500px] rounded-lg overflow-hidden border-2 border-border shadow-lg">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3049.8906766842507!2d-8.809600000000001!3d39.7436!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDQ0JzM3LjAiTiA4wrA0OCcyNi42Ilc!5e0!3m2!1spt-PT!2spt!4v1234567890123!5m2!1spt-PT!2spt"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d191.77008545989!2d-8.826585259049883!3d39.73243148196252!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd227300160777f9%3A0x1308ecd8f89bae14!2sIronstudio!5e0!3m2!1spt-PT!2spt!4v1765843476415!5m2!1spt-PT!2spt"
           width="100%"
           height="100%"
           style={{ border: 0 }}
