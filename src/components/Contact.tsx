@@ -95,7 +95,7 @@ export const Contact = () => {
                 <Mail className="w-6 h-6 text-primary mt-1" />
                 <div>
                   <h4 className="font-bold mb-1 text-[hsl(var(--foreground-light))]">Email</h4>
-                  <p className="text-[hsl(var(--muted-foreground-light))]">geral@ironstudio.pt</p>
+                  <p className="text-[hsl(var(--muted-foreground-light))]">Ironstudio2025@hotmail.com</p>
                 </div>
               </div>
               <div className="flex items-start gap-4">
