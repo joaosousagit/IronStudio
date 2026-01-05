@@ -6,8 +6,8 @@ export const Pricing = () => {
   const titleReveal = useScrollReveal();
   const plan1Reveal = useScrollReveal({ threshold: 0.2 });
   const plan2Reveal = useScrollReveal({ threshold: 0.2 });
-  
   const plan3Reveal = useScrollReveal({ threshold: 0.2 });
+  const plan4Reveal = useScrollReveal({ threshold: 0.2 });
   
   const features = [
     "Acesso 24/7",
@@ -17,6 +17,10 @@ export const Pricing = () => {
     "Zero distrações",
     "Estacionamento gratuito",
   ];
+
+  const openWhatsApp = () => {
+    window.open('https://wa.me/351910000000', '_blank');
+  };
 
   return (
     <section id="pricing" className="py-20 bg-[hsl(var(--background-light))] text-[hsl(var(--foreground-light))]">
@@ -32,24 +36,67 @@ export const Pricing = () => {
             Planos simples e transparentes
           </p>
           <div className="mt-4 inline-block bg-primary text-white px-6 py-2 font-bold uppercase">
-            🎄 Promoção de Dezembro 🎄
+            🔥 Promoção Especial 🔥
           </div>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-          {/* Plano Mensal */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+          {/* Plano Estudante */}
           <div 
             ref={plan1Reveal.ref}
-            className={`bg-white border-4 border-primary p-10 hover:shadow-2xl transition-all duration-300 scroll-slide-left ${plan1Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-4 border-blue-500 p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-left ${plan1Reveal.isVisible ? 'revealed' : ''}`}
+          >
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 text-sm font-bold uppercase">
+              Estudantes
+            </div>
+            <div className="text-center mb-8 mt-4">
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Estudante</h3>
+              <div className="mb-4">
+                <span className="text-2xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
+                  40€
+                </span>
+                <span className="text-5xl font-black text-blue-500">
+                  30€
+                </span>
+                <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
+              </div>
+              <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
+                Com cartão de estudante
+              </p>
+            </div>
+
+            <ul className="space-y-3 mb-8">
+              {features.map((feature, index) => (
+                <li key={index} className="flex items-center gap-3">
+                  <Check className="w-5 h-5 text-blue-500 flex-shrink-0" />
+                  <span className="text-sm text-[hsl(var(--foreground-light))]">{feature}</span>
+                </li>
+              ))}
+            </ul>
+
+            <Button
+              variant="default"
+              size="lg"
+              className="w-full uppercase font-bold tracking-wide bg-blue-500 hover:bg-blue-600"
+              onClick={openWhatsApp}
+            >
+              Juntar-me Agora
+            </Button>
+          </div>
+
+          {/* Plano Mensal */}
+          <div 
+            ref={plan2Reveal.ref}
+            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-up ${plan2Reveal.isVisible ? 'revealed' : ''}`}
           >
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Mensal</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Mensal</h3>
               <div className="mb-4">
-                <span className="text-3xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
+                <span className="text-2xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
                   50€
                 </span>
-                <span className="text-6xl font-black text-primary">
-                  35€
+                <span className="text-5xl font-black text-primary">
+                  40€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
               </div>
@@ -58,11 +105,11 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-3 mb-8">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-[hsl(var(--foreground-light))]">{feature}</span>
+                  <span className="text-sm text-[hsl(var(--foreground-light))]">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -71,11 +118,7 @@ export const Pricing = () => {
               variant="default"
               size="lg"
               className="w-full uppercase font-bold tracking-wide"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={openWhatsApp}
             >
               Juntar-me Agora
             </Button>
@@ -83,33 +126,33 @@ export const Pricing = () => {
 
           {/* Plano Anual */}
           <div 
-            ref={plan2Reveal.ref}
-            className={`bg-white border-4 border-primary p-10 hover:shadow-2xl transition-all duration-300 relative scroll-slide-up ${plan2Reveal.isVisible ? 'revealed' : ''}`}
+            ref={plan3Reveal.ref}
+            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-up ${plan3Reveal.isVisible ? 'revealed' : ''}`}
           >
-            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-6 py-1 text-sm font-bold uppercase">
+            <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 text-sm font-bold uppercase">
               Melhor Valor
             </div>
-            <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Anual</h3>
+            <div className="text-center mb-8 mt-4">
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Anual</h3>
               <div className="mb-4">
-                <span className="text-3xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
+                <span className="text-2xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
                   480€
                 </span>
-                <span className="text-6xl font-black text-primary">
+                <span className="text-5xl font-black text-primary">
                   360€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/ano</span>
               </div>
               <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
-                Poupa 140€ por ano
+                Poupa 120€ por ano
               </p>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-3 mb-8">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                  <span className="text-[hsl(var(--foreground-light))]">{feature}</span>
+                  <span className="text-sm text-[hsl(var(--foreground-light))]">{feature}</span>
                 </li>
               ))}
             </ul>
@@ -118,11 +161,7 @@ export const Pricing = () => {
               variant="default"
               size="lg"
               className="w-full uppercase font-bold tracking-wide"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={openWhatsApp}
             >
               Juntar-me Agora
             </Button>
@@ -130,13 +169,13 @@ export const Pricing = () => {
 
           {/* Plano Experimental */}
           <div 
-            ref={plan3Reveal.ref}
-            className={`bg-white border-2 border-[hsl(var(--border-light))] p-10 hover:shadow-2xl transition-all duration-300 scroll-slide-right ${plan3Reveal.isVisible ? 'revealed' : ''}`}
+            ref={plan4Reveal.ref}
+            className={`bg-white border-2 border-[hsl(var(--border-light))] p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-right ${plan4Reveal.isVisible ? 'revealed' : ''}`}
           >
             <div className="text-center mb-8">
-              <h3 className="text-3xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Experimenta</h3>
+              <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Experimenta</h3>
               <div className="mb-4">
-                <span className="text-6xl font-black text-[hsl(var(--foreground-light))]">15€</span>
+                <span className="text-5xl font-black text-[hsl(var(--foreground-light))]">15€</span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/dia</span>
               </div>
               <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
@@ -144,22 +183,22 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-4 mb-8">
+            <ul className="space-y-3 mb-8">
               <li className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-[hsl(var(--foreground-light))]">Acesso por 1 dia</span>
+                <span className="text-sm text-[hsl(var(--foreground-light))]">Acesso por 1 dia</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-[hsl(var(--foreground-light))]">Todas as instalações</span>
+                <span className="text-sm text-[hsl(var(--foreground-light))]">Todas as instalações</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-[hsl(var(--foreground-light))]">Conhece o espaço</span>
+                <span className="text-sm text-[hsl(var(--foreground-light))]">Conhece o espaço</span>
               </li>
               <li className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
-                <span className="text-[hsl(var(--foreground-light))]">Sem compromisso</span>
+                <span className="text-sm text-[hsl(var(--foreground-light))]">Sem compromisso</span>
               </li>
             </ul>
 
@@ -167,11 +206,7 @@ export const Pricing = () => {
               variant="outline"
               size="lg"
               className="w-full uppercase font-bold tracking-wide"
-              onClick={() =>
-                document
-                  .getElementById("contact")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
+              onClick={openWhatsApp}
             >
               Experimentar
             </Button>
