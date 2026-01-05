@@ -47,9 +47,7 @@ export const Gallery = () => {
             <h1 className="text-5xl md:text-6xl font-black mb-6 uppercase">
               Uma imagem vale mais que mil palavras
             </h1>
-            <p className="text-xl text-muted-foreground">
-              Neste caso temos {images.length} delas
-            </p>
+            
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
