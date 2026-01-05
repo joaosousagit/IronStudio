@@ -52,7 +52,7 @@ export const Hero = () => {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-white font-black uppercase text-sm tracking-wider px-10 py-8 rounded-lg min-w-[300px] shadow-2xl shadow-primary/50 transition-all hover:scale-105"
-              onClick={() => window.open('https://wa.me/351910000000', '_blank')}
+              onClick={() => window.open('https://wa.me/351910100793', '_blank')}
             >
               COMEÇAR AGORA
               <ArrowRight className="ml-3 h-6 w-6" />
