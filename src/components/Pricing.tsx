@@ -40,11 +40,11 @@ export const Pricing = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto items-stretch">
           {/* Plano Estudante */}
           <div 
             ref={plan1Reveal.ref}
-            className={`bg-white border-4 border-blue-500 p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-left ${plan1Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-4 border-blue-500 p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-left flex flex-col h-full ${plan1Reveal.isVisible ? 'revealed' : ''}`}
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-blue-500 text-white px-4 py-1 text-sm font-bold uppercase">
               Estudantes
@@ -65,7 +65,7 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-grow">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-blue-500 flex-shrink-0" />
@@ -77,7 +77,7 @@ export const Pricing = () => {
             <Button
               variant="default"
               size="lg"
-              className="w-full uppercase font-bold tracking-wide bg-blue-500 hover:bg-blue-600"
+              className="w-full uppercase font-bold tracking-wide bg-blue-500 hover:bg-blue-600 mt-auto"
               onClick={openWhatsApp}
             >
               Juntar-me Agora
@@ -87,9 +87,9 @@ export const Pricing = () => {
           {/* Plano Mensal */}
           <div 
             ref={plan2Reveal.ref}
-            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-up ${plan2Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-up flex flex-col h-full ${plan2Reveal.isVisible ? 'revealed' : ''}`}
           >
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 mt-4">
               <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Mensal</h3>
               <div className="mb-4">
                 <span className="text-2xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
@@ -105,7 +105,7 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-grow">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -117,7 +117,7 @@ export const Pricing = () => {
             <Button
               variant="default"
               size="lg"
-              className="w-full uppercase font-bold tracking-wide"
+              className="w-full uppercase font-bold tracking-wide mt-auto"
               onClick={openWhatsApp}
             >
               Juntar-me Agora
@@ -127,7 +127,7 @@ export const Pricing = () => {
           {/* Plano Anual */}
           <div 
             ref={plan3Reveal.ref}
-            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-up ${plan3Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-4 border-primary p-8 hover:shadow-2xl transition-all duration-300 relative scroll-slide-up flex flex-col h-full ${plan3Reveal.isVisible ? 'revealed' : ''}`}
           >
             <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-primary text-white px-4 py-1 text-sm font-bold uppercase">
               Melhor Valor
@@ -148,7 +148,7 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-grow">
               {features.map((feature, index) => (
                 <li key={index} className="flex items-center gap-3">
                   <Check className="w-5 h-5 text-primary flex-shrink-0" />
@@ -160,7 +160,7 @@ export const Pricing = () => {
             <Button
               variant="default"
               size="lg"
-              className="w-full uppercase font-bold tracking-wide"
+              className="w-full uppercase font-bold tracking-wide mt-auto"
               onClick={openWhatsApp}
             >
               Juntar-me Agora
@@ -170,9 +170,9 @@ export const Pricing = () => {
           {/* Plano Experimental */}
           <div 
             ref={plan4Reveal.ref}
-            className={`bg-white border-2 border-[hsl(var(--border-light))] p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-right ${plan4Reveal.isVisible ? 'revealed' : ''}`}
+            className={`bg-white border-2 border-[hsl(var(--border-light))] p-8 hover:shadow-2xl transition-all duration-300 scroll-slide-right flex flex-col h-full ${plan4Reveal.isVisible ? 'revealed' : ''}`}
           >
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 mt-4">
               <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Experimenta</h3>
               <div className="mb-4">
                 <span className="text-5xl font-black text-[hsl(var(--foreground-light))]">15€</span>
@@ -183,7 +183,7 @@ export const Pricing = () => {
               </p>
             </div>
 
-            <ul className="space-y-3 mb-8">
+            <ul className="space-y-3 mb-8 flex-grow">
               <li className="flex items-center gap-3">
                 <Check className="w-5 h-5 text-primary flex-shrink-0" />
                 <span className="text-sm text-[hsl(var(--foreground-light))]">Acesso por 1 dia</span>
@@ -205,7 +205,7 @@ export const Pricing = () => {
             <Button
               variant="outline"
               size="lg"
-              className="w-full uppercase font-bold tracking-wide"
+              className="w-full uppercase font-bold tracking-wide mt-auto"
               onClick={openWhatsApp}
             >
               Experimentar
