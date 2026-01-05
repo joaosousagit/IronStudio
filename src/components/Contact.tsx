@@ -15,7 +15,7 @@ export const Contact = () => {
   };
 
   const handleWhatsAppClick = () => {
-    window.open('https://wa.me/351910000000', '_blank');
+    window.open('https://wa.me/351910100793', '_blank');
   };
 
   return (
