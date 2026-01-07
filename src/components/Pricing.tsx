@@ -53,7 +53,7 @@ export const Pricing = () => {
               <h3 className="text-2xl font-bold mb-4 text-[hsl(var(--foreground-light))] uppercase">Plano Estudante</h3>
               <div className="mb-4">
                 <span className="text-2xl font-bold text-[hsl(var(--muted-foreground-light))] line-through mr-2">
-                  40€
+                  50€
                 </span>
                 <span className="text-5xl font-black text-blue-500">
                   30€
