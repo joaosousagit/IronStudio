@@ -56,7 +56,7 @@ export const Pricing = () => {
                   50€
                 </span>
                 <span className="text-5xl font-black text-blue-500">
-                  30€
+                  35€
                 </span>
                 <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
               </div>
