@@ -1,4 +1,5 @@
 import { InstagramIcon } from "./SocialIcons";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -31,7 +32,16 @@ export const Footer = () => {
           </div>
         </div>
 
-        <div className="mt-6 pt-6 border-t border-border text-center text-sm text-muted-foreground">
+        <div className="mt-6 pt-6 border-t border-border text-center text-sm text-muted-foreground space-y-2">
+          <div className="flex justify-center gap-4 flex-wrap">
+            <Link to="/privacidade" className="hover:text-primary transition-colors">
+              Política de Privacidade
+            </Link>
+            <span className="text-border">|</span>
+            <Link to="/termos" className="hover:text-primary transition-colors">
+              Termos e Condições
+            </Link>
+          </div>
           <p>&copy; {currentYear} Iron Studio | BB Club. Todos os direitos reservados.</p>
         </div>
       </div>
