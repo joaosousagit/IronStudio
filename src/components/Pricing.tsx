@@ -101,7 +101,7 @@ export const Pricing = () => {
                 <span className="text-[hsl(var(--muted-foreground-light))]">/mês</span>
               </div>
               <p className="text-sm text-[hsl(var(--muted-foreground-light))] uppercase">
-                Pagamento por MBWay
+                Pagamento por Débito Direto
               </p>
             </div>
 

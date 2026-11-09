@@ -51,7 +51,7 @@ const TermsConditions = () => {
               <h2 className="text-2xl font-bold mb-3">4. Planos e Pagamentos</h2>
               <ul className="list-disc pl-6 space-y-1">
                 <li>Os preços apresentados no website são válidos à data de publicação e podem ser alterados sem aviso prévio</li>
-                <li>O pagamento é efetuado antecipadamente, por MBWay ou outro método acordado</li>
+                <li>O pagamento é efetuado por débito direto, autorizado pelo membro</li>
                 <li>Os planos mensais renovam-se automaticamente, salvo cancelamento prévio</li>
                 <li>O plano anual requer pagamento integral no ato da subscrição</li>
                 <li>Não existem reembolsos parciais por períodos não utilizados</li>
