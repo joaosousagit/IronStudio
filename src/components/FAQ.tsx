@@ -31,7 +31,7 @@ export const FAQ = () => {
     {
       question: "Como funciona o pagamento?",
       answer:
-        "O pagamento é feito por MBWay, de forma simples e segura.",
+        "O pagamento é feito por débito direto, de forma simples e automática.",
     },
     {
       question: "Há estacionamento?",
